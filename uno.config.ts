@@ -1,7 +1,10 @@
 import {
   defineConfig,
-  presetAttributify, presetTypography, presetUno, presetWebFonts,
-} from 'unocss'
+  presetAttributify,
+  presetTypography,
+  presetUno,
+  presetWebFonts,
+} from "unocss";
 
 export default defineConfig({
   presets: [
@@ -9,10 +12,10 @@ export default defineConfig({
     presetUno(),
     presetTypography(),
     presetWebFonts({
-      provider: 'google',
+      provider: "google",
       fonts: {
-        base: 'Inter',
-      }
+        base: "Inter",
+      },
     }),
   ],
-})
+});

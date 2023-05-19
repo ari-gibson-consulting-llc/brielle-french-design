@@ -1,4 +1,22 @@
 ---
+const navItems = [
+  {
+    label: "About",
+    color: "#F1FA43",
+  },
+  {
+    label: "Portfolio",
+    color: "#FF7DB8",
+  },
+  {
+    label: "Services",
+    color: "#3DBFAF",
+  },
+  {
+    label: "Contact",
+    color: "#EC291C",
+  },
+];
 ---
 
 <header aria-label="Site Header" class="bg-white">
@@ -16,43 +34,33 @@
           <ul
             class="flex justify-between gap-8 md:text-[2.3vw] lg:text-2xl font-base font-bold uppercase"
           >
-            <li>
-              <a class="text-black transition hover:bg-#F1FA43 p-1" href="/">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a class="text-black transition hover:bg-#FF7DB8 p-1" href="/">
-                Portfolio
-              </a>
-            </li>
-
-            <li>
-              <a class="text-black transition hover:bg-#3DBFAF p-1" href="/">
-                Services
-              </a>
-            </li>
-
-            <li>
-              <a class="text-black transition hover:bg-#EC291C p-1" href="/">
-                Contact
-              </a>
-            </li>
+            {
+              navItems.map((item) => (
+                <li>
+                  <a
+                    class={`text-black transition hover:bg-${item.color} p-1`}
+                    href={"/" + item.label.toLowerCase()}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </nav>
 
         <div class="flex items-center justify-end">
-          <div class="block md:hidden">
+          <div class="block md:hidden relative" x-data="{ isActive: false }">
             <button
-              class="rounded bg-gray-100 p-3 mr-12 text-gray-600 transition hover:text-gray-600/75"
+              class="rounded bg-black p-2 s:p-3 text-gray-600 transition hover:text-gray-600/75"
+              x-on:click="isActive = !isActive"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 class="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
                 stroke-width="2"
               >
                 <path
@@ -61,6 +69,29 @@
                   d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
+            <div
+              class="absolute end-0 z-10 mt-4 w-48 rounded-md border border-gray-100 bg-white shadow-lg"
+              role="menu"
+              x-cloak
+              x-transition
+              x-show="isActive"
+              x-on:click.away="isActive = false"
+              x-on:keydown.escape.window="isActive = false"
+            >
+              <div class="p-2">
+                {
+                  navItems.map((item) => (
+                    <a
+                      class="block rounded-lg text-right px-4 py-2 text-md text-black hover:bg-gray-50 font-base font-bold uppercase"
+                      href={"/" + item.label.toLowerCase()}
+                      role="menuitem"
+                    >
+                      {item.label}
+                    </a>
+                  ))
+                }
+              </div>
+            </div>
           </div>
         </div>
       </div>

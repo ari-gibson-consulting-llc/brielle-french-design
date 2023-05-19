@@ -10,11 +10,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^2.3.2"
+    "astro": "^2.5.0"
   },
   "devDependencies": {
-    "@unocss/preset-web-fonts": "^0.51.8",
-    "@unocss/reset": "^0.51.8",
-    "unocss": "^0.51.8"
+    "@unocss/preset-web-fonts": "^0.51.13",
+    "@unocss/reset": "^0.51.13",
+    "unocss": "^0.51.13"
   }
 }

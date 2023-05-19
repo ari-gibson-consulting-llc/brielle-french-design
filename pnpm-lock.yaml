@@ -6,6 +6,12 @@ dependencies:
     version: 2.3.2
 
 devDependencies:
+  '@unocss/preset-web-fonts':
+    specifier: ^0.51.8
+    version: 0.51.8
+  '@unocss/reset':
+    specifier: ^0.51.8
+    version: 0.51.8
   unocss:
     specifier: ^0.51.8
     version: 0.51.8(postcss@8.4.23)(vite@4.3.4)

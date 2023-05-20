@@ -40,7 +40,7 @@ import Logo from "../assets/logo-big.png";
   machine.attach();
 </script>
 
-<style>
+<style is:global>
   .slot-machine {
     margin: 0px auto;
     width: 700px;
@@ -69,5 +69,11 @@ import Logo from "../assets/logo-big.png";
     margin: 0px;
     padding: 0px;
     background-size: contain;
+  }
+</style>
+
+<style>
+  .slot-machine {
+    @apply text-5xl;
   }
 </style>

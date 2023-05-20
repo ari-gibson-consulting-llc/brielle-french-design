@@ -1,21 +1,7 @@
 ---
-import Nav from '../components/Nav.astro'
-import Footer from '../components/Footer.astro'
+import Base from "../layouts/Base.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<Nav />
-		<div class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
-
-		</div>
-		<Footer />
-	</body>
-</html>
+<Base>
+  <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white"></main>
+</Base>

@@ -13,7 +13,8 @@
     "@astrojs/alpinejs": "^0.2.2",
     "@types/alpinejs": "^3.0.0",
     "alpinejs": "^3.0.0",
-    "astro": "^2.5.0"
+    "astro": "^2.5.0",
+    "astro-seo": "^0.7.2"
   },
   "devDependencies": {
     "@unocss/preset-web-fonts": "^0.51.13",

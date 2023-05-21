@@ -7,13 +7,14 @@ import Logo from "../assets/logo-big.png";
 <Base>
   <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
     <div class="flex h-full justify-center items-center px-10">
-      <p
+      <div
         class="font-bold text-right leading-20 text-5xl sm:md:text-8xl sm:md:leading-30"
       >
-        Invest in <br /><div class="slot-machine"></div>.
-      </p>
+        <div>Invest in</div>
+        <div class="flex items-end"><div class="slot-machine"></div>.</div>
+      </div>
 
-      <div class="ml-[-200px] z-[-1]">
+      <div class="ml-[-200px] z-[-100]">
         <Image src={Logo.src} width={700} height={100} alt="logo image" />
       </div>
     </div>
@@ -60,6 +61,7 @@ import Logo from "../assets/logo-big.png";
   .slot-machine--items-container {
     position: absolute;
     top: 0px;
+    right: 0px;
     transition: all, 0.5s, cubic-bezier(0.02, 0.01, 0.47, 1);
   }
 
@@ -69,11 +71,5 @@ import Logo from "../assets/logo-big.png";
     margin: 0px;
     padding: 0px;
     background-size: contain;
-  }
-</style>
-
-<style>
-  .slot-machine {
-    @apply text-5xl;
   }
 </style>

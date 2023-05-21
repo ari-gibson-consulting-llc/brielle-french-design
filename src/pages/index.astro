@@ -8,10 +8,14 @@ import Logo from "../assets/logo-big.png";
   <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
     <div class="flex h-full justify-center items-center px-10">
       <div
-        class="font-bold text-right leading-20 text-5xl sm:md:text-8xl sm:md:leading-30"
+        class="font-bold font-base text-right leading-20 text-5xl sm:md:text-8xl sm:md:leading-30"
       >
-        <div>Invest in</div>
-        <div class="flex items-end"><div class="slot-machine"></div>.</div>
+        <div class="mt-24">Invest in</div>
+        <div class="flex items-end">
+          <div class="slot-machine">
+            <div id="design">design</div>
+          </div>
+        </div>
       </div>
 
       <div class="ml-[-200px] z-[-100]">
@@ -24,34 +28,58 @@ import Logo from "../assets/logo-big.png";
 <script>
   import { SlotMachineEffect } from "../lib/slotMachineEffect";
   const slotMachineTextList = [
-    "brand identity",
-    "social media content",
-    "event marketing",
-    "business cards",
-    "cover design",
+    "social media content.",
+    "brand identity.",
+    "event marketing.",
+    "business cards.",
+    "cover design.",
+    "social media content.",
+    "brand identity.",
+    "event marketing.",
+    "business cards.",
+    "cover design.",
+    "social media content.",
+    "brand identity.",
+    "event marketing.",
+    "business cards.",
+    "cover design.",
+    "social media content.",
+    "brand identity.",
+    "event marketing.",
+    "business cards.",
+    "cover design.",
+    "social media content.",
+    "brand identity.",
+    "event marketing.",
+    "business cards.",
+    "cover design.",
   ];
 
   const machine = new SlotMachineEffect({
     wordList: slotMachineTextList,
-    container: document.querySelector("div.slot-machine") as HTMLElement,
+    container: document.querySelector('div.slot-machine') as HTMLElement,
     minItemsToPassBy: 2,
-    maxItemsToPassBy: 4,
+    maxItemsToPassBy: 8,
   });
 
+  document.querySelector("div#design")!.classList.add("hidden");
   machine.attach();
+
+  setInterval(() => {
+    machine.animate();
+  }, 4000);
 </script>
 
 <style is:global>
   .slot-machine {
     margin: 0px auto;
     width: 700px;
-    margin-top: 50px;
     z-index: -10;
   }
 
   .slot-machine--mask {
     width: 100%;
-    height: 150px;
+    height: 400px;
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -66,8 +94,8 @@ import Logo from "../assets/logo-big.png";
   }
 
   .slot-machine--item {
-    min-height: 150px;
-    max-height: 150px;
+    min-height: 400px;
+    max-height: 400px;
     margin: 0px;
     padding: 0px;
     background-size: contain;

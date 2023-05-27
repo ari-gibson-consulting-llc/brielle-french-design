@@ -98,3 +98,13 @@ const navItems = [
     </div>
   </div>
 </header>
+
+<style is:global lang="scss">
+  $backgrounds: \#F1FA43, \#FF7DB8, \#3DBFAF, \#EC291C;
+
+  @each $background in $backgrounds {
+    .hover\:bg-\[#{$background}\]:hover {
+      background-color: str-slice(#{$background}, 2);
+    }
+  }
+</style>

@@ -14,7 +14,8 @@
     "@types/alpinejs": "^3.0.0",
     "alpinejs": "^3.0.0",
     "astro": "^2.5.0",
-    "astro-seo": "^0.7.2"
+    "astro-seo": "^0.7.2",
+    "sass": "^1.62.1"
   },
   "devDependencies": {
     "@unocss/preset-web-fonts": "^0.51.13",

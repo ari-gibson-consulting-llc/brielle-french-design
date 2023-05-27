@@ -71,7 +71,7 @@ export class SlotMachineEffect {
   }
 
   private indexToRotateTo(wordListLength: number): number {
-    return Math.floor(Math.random() * (this.max - this.min + 1) + this.max);
+    return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   }
 
   private popPushNItems(n: number): void {

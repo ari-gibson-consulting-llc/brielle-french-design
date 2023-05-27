@@ -15,17 +15,17 @@ export class SlotMachineEffect {
   constructor(options: SlotMachineEffectOptions) {
     const { wordList, container, minItemsToPassBy, maxItemsToPassBy } = options;
 
-    if (wordList.length < 5)
-      throw new Error("wordList must have at least 5 items");
+    // if (wordList.length < 5)
+    //   throw new Error("wordList must have at least 5 items");
 
-    if (minItemsToPassBy > maxItemsToPassBy)
-      throw new Error("minItemsToPassBy must be less than maxItemsToPassBy");
+    // if (minItemsToPassBy > maxItemsToPassBy)
+    //   throw new Error("minItemsToPassBy must be less than maxItemsToPassBy");
 
-    if (minItemsToPassBy > wordList.length)
-      throw new Error("minItemsToPassBy must be less than wordList length");
+    // if (minItemsToPassBy > wordList.length)
+    //   throw new Error("minItemsToPassBy must be less than wordList length");
 
-    if (maxItemsToPassBy > wordList.length)
-      throw new Error("maxItemsToPassBy must be less than wordList length");
+    // if (maxItemsToPassBy > wordList.length)
+    //   throw new Error("maxItemsToPassBy must be less than wordList length");
 
     this.wordList = wordList;
     this.container = container;

@@ -13,13 +13,19 @@ import Logo from "../assets/logo-big.png";
         <div class="mt-24">Invest in</div>
         <div class="flex items-end">
           <div class="slot-machine">
-            <div id="design">design</div>
+            <div id="design" class="mb-66.25">design</div>
           </div>
         </div>
       </div>
 
       <div class="ml-[-200px] z-[-100]">
-        <Image src={Logo.src} width={700} height={100} alt="logo image" />
+        <!-- Image is purely decorative, no alt tag needed -->
+        <Image
+          src={Logo}
+          width={700}
+          height={100}
+          alt=""
+        />
       </div>
     </div>
   </main>
@@ -28,42 +34,24 @@ import Logo from "../assets/logo-big.png";
 <script>
   import { SlotMachineEffect } from "../lib/slotMachineEffect";
   const slotMachineTextList = [
-    "social media content.",
-    "brand identity.",
-    "event marketing.",
-    "business cards.",
-    "cover design.",
-    "social media content.",
-    "brand identity.",
-    "event marketing.",
-    "business cards.",
-    "cover design.",
-    "social media content.",
-    "brand identity.",
-    "event marketing.",
-    "business cards.",
-    "cover design.",
-    "social media content.",
-    "brand identity.",
-    "event marketing.",
-    "business cards.",
-    "cover design.",
-    "social media content.",
-    "brand identity.",
-    "event marketing.",
-    "business cards.",
-    "cover design.",
+    "social media content",
+    "brand identity",
+    "business cards",
+    "cover design",
   ];
 
   const machine = new SlotMachineEffect({
     wordList: slotMachineTextList,
-    container: document.querySelector('div.slot-machine') as HTMLElement,
+    container: document.querySelector("div.slot-machine") as HTMLElement,
     minItemsToPassBy: 2,
     maxItemsToPassBy: 8,
   });
 
+  await new Promise((r) => setTimeout(r, 3000));
+
   document.querySelector("div#design")!.classList.add("hidden");
   machine.attach();
+  machine.animate();
 
   setInterval(() => {
     machine.animate();

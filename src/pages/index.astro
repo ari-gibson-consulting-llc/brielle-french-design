@@ -1,7 +1,91 @@
 ---
+import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
+import Logo from "../assets/logo-big.png";
 ---
 
 <Base>
-  <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white"></main>
+  <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
+    <div class="flex h-full justify-center items-center px-10">
+      <div
+        class="font-bold font-base text-right leading-20 text-5xl sm:md:text-8xl sm:md:leading-30"
+      >
+        <div class="mt-24">Invest in</div>
+        <div class="flex items-end">
+          <div class="slot-machine">
+            <div id="design" class="mb-66.25">design</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ml-[-200px] z-[-100]">
+        <!-- Image is purely decorative, no alt tag needed -->
+        <Image
+          src={Logo}
+          width={700}
+          height={100}
+          alt=""
+        />
+      </div>
+    </div>
+  </main>
 </Base>
+
+<script>
+  import { SlotMachineEffect } from "../lib/slotMachineEffect";
+  const slotMachineTextList = [
+    "social media content",
+    "brand identity",
+    "business cards",
+    "cover design",
+  ];
+
+  const machine = new SlotMachineEffect({
+    wordList: slotMachineTextList,
+    container: document.querySelector("div.slot-machine") as HTMLElement,
+    minItemsToPassBy: 2,
+    maxItemsToPassBy: 8,
+  });
+
+  await new Promise((r) => setTimeout(r, 3000));
+
+  document.querySelector("div#design")!.classList.add("hidden");
+  machine.attach();
+  machine.animate();
+
+  setInterval(() => {
+    machine.animate();
+  }, 4000);
+</script>
+
+<style is:global>
+  .slot-machine {
+    margin: 0px auto;
+    width: 700px;
+    z-index: -10;
+  }
+
+  .slot-machine--mask {
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    margin-bottom: -40px;
+  }
+
+  .slot-machine--items-container {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    transition: all, 0.5s, cubic-bezier(0.02, 0.01, 0.47, 1);
+  }
+
+  .slot-machine--item {
+    min-height: 400px;
+    max-height: 400px;
+    margin: 0px;
+    padding: 0px;
+    background-size: contain;
+  }
+</style>

@@ -11,19 +11,19 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.2.2",
-    "@types/alpinejs": "^3.0.0",
-    "alpinejs": "^3.0.0",
-    "astro": "^2.5.0",
+    "@types/alpinejs": "^3.7.1",
+    "alpinejs": "^3.12.1",
+    "astro": "^2.5.5",
     "astro-seo": "^0.7.2",
     "sass": "^1.62.1",
     "sharp": "^0.32.1"
   },
   "devDependencies": {
-    "@unocss/preset-web-fonts": "^0.51.13",
-    "@unocss/reset": "^0.51.13",
-    "@unocss/transformer-directives": "^0.51.13",
+    "@unocss/preset-web-fonts": "^0.52.4",
+    "@unocss/reset": "^0.52.4",
+    "@unocss/transformer-directives": "^0.52.4",
     "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.8.1",
-    "unocss": "^0.51.13"
+    "prettier-plugin-astro": "^0.9.1",
+    "unocss": "^0.52.4"
   }
 }

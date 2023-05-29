@@ -6,13 +6,13 @@ import Logo from "../assets/logo-big.png";
 
 <Base>
   <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
-    <div class="grid h-full px-4 md:px-10 text-right">
-      <div class="h-full flex items-center lg:w-auto lg:ml-[-200px] z-[-100]">
+    <div class="grid h-full px-10 text-right">
+      <div class="h-full flex items-center justify-center lg:w-auto lg:ml-[-200px] z-[-100]">
         <!-- Image is purely decorative, no alt tag needed -->
-        <Image src={Logo} alt="" class="" />
+        <Image src={Logo} alt="" class="sm:w-4/5" />
       </div>
       <div
-        class="h-full lg:flex lg:flex-col lg:items-end justify-center font-bold font-base text-left text-6xl leading-16 md:text-7xl lg:text-8xl lg:leading-30"
+        class="h-full lg:flex lg:flex-col lg:items-end justify-center font-bold font-base text-left text-5xl sm:text-6xl leading-16 md:text-7xl lg:text-8xl lg:leading-30"
       >
         <div class="md:mt-24 block">Invest in</div>
         <div class="flex items-end">
@@ -71,7 +71,7 @@ import Logo from "../assets/logo-big.png";
   .slot-machine--items-container {
     position: absolute;
     top: 0px;
-    right: 0px;
+    /* right: 0px; */
     transition: all, 0.5s, cubic-bezier(0.02, 0.01, 0.47, 1);
   }
 

@@ -5,17 +5,19 @@ import Logo from "../assets/logo-big.png";
 ---
 
 <Base>
-  <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
-    <div class="grid md:grid-cols-10 h-full px-10 justify-center">
-      <div class="h-full flex items-center justify-center md:row-start-1 md:col-start-4 md:col-end--1 lg:w-auto lg:ml-[-200px] z-[-100]">
+  <main class="relative z-10 mb-36 block h-[calc(100vh-12rem)] bg-white">
+    <div class="grid h-full justify-center px-10 md:grid-cols-10">
+      <div
+        class="md:col-end--1 z-[-100] flex h-full items-center justify-center md:col-start-4 md:row-start-1 lg:ml-[-200px] lg:w-auto"
+      >
         <!-- Image is purely decorative, no alt tag needed -->
         <Image src={Logo} alt="" class="md:max-w-200 sm:w-4/5 md:w-full" />
       </div>
       <div
-        class="h-full md:row-start-1 md:col-start-1 md:col-end-6 md:flex md:flex-col md:items-end justify-center font-bold font-base text-left md:text-right text-5xl sm:text-6xl leading-16 md:text-7xl lg:text-8xl lg:leading-30"
+        class="font-base leading-16 lg:leading-30 h-full justify-center text-left text-5xl font-bold sm:text-6xl md:col-start-1 md:col-end-6 md:row-start-1 md:flex md:flex-col md:items-end md:text-right md:text-7xl lg:text-8xl"
       >
-        <div class="md:mt-24 block">Invest in</div>
-        <div class="md:w-full flex items-end">
+        <div class="block md:mt-24">Invest in</div>
+        <div class="flex items-end md:w-full">
           <div class="slot-machine">
             <div id="design" class="mb-66.25">design</div>
           </div>
@@ -66,18 +68,18 @@ import Logo from "../assets/logo-big.png";
     position: relative;
     display: inline-block;
     margin-bottom: -40px;
-    @apply h-50 md:h-100
+    @apply h-50 md:h-100;
   }
 
   .slot-machine--items-container {
     transition: all, 0.5s, cubic-bezier(0.02, 0.01, 0.47, 1);
-    @apply absolute top-0 md:right-0
+    @apply absolute top-0 md:right-0;
   }
 
   .slot-machine--item {
     margin: 0px;
     padding: 0px;
     background-size: contain;
-    @apply h-50 md:h-100
+    @apply h-50 md:h-100;
   }
 </style>

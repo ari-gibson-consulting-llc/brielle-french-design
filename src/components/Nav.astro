@@ -22,17 +22,17 @@ const navItems = [
 <header aria-label="Site Header" class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-48 items-center justify-between">
-      <div class="flex-1 basis-80 mr-18 md:flex md:items-center">
+      <div class="mr-18 flex-1 basis-80 md:flex md:items-center">
         <a class="block text-teal-600" href="/">
           <span class="sr-only">Home</span>
           <img src="/logo.png" />
         </a>
       </div>
 
-      <div class="flex-auto md:gap-12 md:items-center md:gap-24">
+      <div class="flex-auto md:items-center md:gap-12 md:gap-24">
         <nav aria-label="Site Nav" class="hidden md:block">
           <ul
-            class="flex justify-between gap-8 md:text-[2.3vw] lg:text-2xl font-base font-bold uppercase"
+            class="font-base flex justify-between gap-8 font-bold uppercase md:text-[2.3vw] lg:text-2xl"
           >
             {
               navItems.map((item) => (
@@ -50,9 +50,9 @@ const navItems = [
         </nav>
 
         <div class="flex items-center justify-end">
-          <div class="block md:hidden relative" x-data="{ isActive: false }">
+          <div class="relative block md:hidden" x-data="{ isActive: false }">
             <button
-              class="rounded bg-black p-2 s:p-3 text-gray-600 transition hover:text-gray-600/75"
+              class="s:p-3 rounded bg-black p-2 text-gray-600 transition hover:text-gray-600/75"
               x-on:click="isActive = !isActive"
             >
               <svg
@@ -82,7 +82,7 @@ const navItems = [
                 {
                   navItems.map((item) => (
                     <a
-                      class="block rounded-lg text-right px-4 py-2 text-md text-black hover:bg-gray-50 font-base font-bold uppercase"
+                      class="text-md font-base block rounded-lg px-4 py-2 text-right font-bold uppercase text-black hover:bg-gray-50"
                       href={"/" + item.label.toLowerCase()}
                       role="menuitem"
                     >

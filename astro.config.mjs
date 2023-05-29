@@ -11,9 +11,9 @@ export default defineConfig({
     alpinejs(),
   ],
   experimental: {
-    assets: true
+    assets: true,
   },
   image: {
     service: sharpImageService(),
-  }
+  },
 });

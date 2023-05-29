@@ -7,7 +7,10 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "format": "prettier -w . --plugin-search-dir=.",
+    "format:check": "prettier -c . --plugin-search-dir=.",
+    "typeCheck": "astro check && tsc --noEmit"
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.2.2",
@@ -24,6 +27,7 @@
     "@unocss/transformer-directives": "^0.52.4",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.9.1",
+    "prettier-plugin-tailwindcss": "^0.3.0",
     "unocss": "^0.52.4"
   }
 }

@@ -6,26 +6,20 @@ import Logo from "../assets/logo-big.png";
 
 <Base>
   <main class="h-[calc(100vh-12rem)] block mb-36 z-10 relative bg-white">
-    <div class="flex h-full justify-center items-center px-10">
+    <div class="grid h-full px-4 md:px-10 text-right">
+      <div class="h-full flex items-center lg:w-auto lg:ml-[-200px] z-[-100]">
+        <!-- Image is purely decorative, no alt tag needed -->
+        <Image src={Logo} alt="" class="" />
+      </div>
       <div
-        class="font-bold font-base text-right leading-20 text-5xl sm:md:text-8xl sm:md:leading-30"
+        class="h-full lg:flex lg:flex-col lg:items-end justify-center font-bold font-base text-left text-6xl leading-16 md:text-7xl lg:text-8xl lg:leading-30"
       >
-        <div class="mt-24">Invest in</div>
+        <div class="md:mt-24 block">Invest in</div>
         <div class="flex items-end">
           <div class="slot-machine">
             <div id="design" class="mb-66.25">design</div>
           </div>
         </div>
-      </div>
-
-      <div class="ml-[-200px] z-[-100]">
-        <!-- Image is purely decorative, no alt tag needed -->
-        <Image
-          src={Logo}
-          width={700}
-          height={100}
-          alt=""
-        />
       </div>
     </div>
   </main>
@@ -61,13 +55,13 @@ import Logo from "../assets/logo-big.png";
 <style is:global>
   .slot-machine {
     margin: 0px auto;
-    width: 700px;
+    width: 100%;
     z-index: -10;
   }
 
   .slot-machine--mask {
     width: 100%;
-    height: 400px;
+    height: 200px;
     overflow: hidden;
     position: relative;
     display: inline-block;
@@ -82,8 +76,8 @@ import Logo from "../assets/logo-big.png";
   }
 
   .slot-machine--item {
-    min-height: 400px;
-    max-height: 400px;
+    min-height: 200px;
+    max-height: 200px;
     margin: 0px;
     padding: 0px;
     background-size: contain;

@@ -43,6 +43,12 @@ dependencies:
     version: 5.2.2
 
 devDependencies:
+  '@cloudflare/pages-plugin-mailchannels':
+    specifier: ^0.1.2
+    version: 0.1.2
+  '@cloudflare/workers-types':
+    specifier: ^4.20230518.0
+    version: 4.20231025.0
   '@types/minimasonry':
     specifier: ^1.3.2
     version: 1.3.2
@@ -448,6 +454,10 @@ packages:
       mime: 3.0.0
     dev: true
 
+  /@cloudflare/pages-plugin-mailchannels@0.1.2:
+    resolution: {integrity: sha512-xPZNM4NEhFkxnx6JNqoWzk3zgvyoPTFb5KbBz5Z1bc4X/D3gidR776WyUVQzR5OphzTqZfFiC9B8mYUyG0WEVg==}
+    dev: true
+
   /@cloudflare/workerd-darwin-64@1.20231016.0:
     resolution: {integrity: sha512-rPAnF8Q25+eHEsAopihWeftPW/P0QapY9d7qaUmtOXztWdd6YPQ7JuiWVj4Nvjphge1BleehxAbo4I3Z4L2H1g==}
     engines: {node: '>=16'}
@@ -492,6 +502,10 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@cloudflare/workers-types@4.20231025.0:
+    resolution: {integrity: sha512-TkcZkntUTOcvJ4vgmwpNfLTclpMbmbClZCe62B25/VTukmyv91joRa4eKzSjzCZUXTbFHNmVdOpmGaaJU2U3+A==}
+    dev: true
 
   /@contentful/rich-text-types@16.3.0:
     resolution: {integrity: sha512-OfQmAu5bxE0CgQA3WlUleVej+ifFG/iXmB2DmUl4EyWyFue1aiIvfjxQhcDRSH4n1jUNMJ6L1wInZL8uV5m3TQ==}

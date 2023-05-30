@@ -19,18 +19,18 @@ const navItems = [
 ];
 ---
 
-<header aria-label="Site Header" class="bg-white">
+<header class="bg-white">
   <div class="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
     <div class="flex h-48 items-center justify-between">
       <div class="mr-18 flex-1 basis-80 md:flex md:items-center">
         <a class="block text-teal-600" href="/">
           <span class="sr-only">Home</span>
-          <img src="/logo.png" />
+          <img src="/logo.png" alt="Brielle French Design Logo" />
         </a>
       </div>
 
       <div class="flex-auto md:items-center md:gap-12 md:gap-24">
-        <nav aria-label="Site Nav" class="hidden md:block">
+        <nav aria-label="Site navigation" class="hidden md:block">
           <ul
             class="font-base flex justify-between gap-8 font-bold uppercase md:text-[2.3vw] lg:text-2xl"
           >
@@ -54,6 +54,7 @@ const navItems = [
             <button
               class="s:p-3 rounded bg-black p-2 text-gray-600 transition hover:text-gray-600/75"
               x-on:click="isActive = !isActive"
+              aria-label="Open site navigation"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +72,7 @@ const navItems = [
             </button>
             <div
               class="absolute end-0 z-20 mt-4 w-48 rounded-md border border-gray-100 bg-white shadow-lg"
-              role="menu"
+              role="navigation"
               x-cloak
               x-transition
               x-show="isActive"
@@ -84,7 +85,6 @@ const navItems = [
                     <a
                       class="text-md font-base block rounded-lg px-4 py-2 text-right font-bold uppercase text-black hover:bg-gray-50"
                       href={"/" + item.label.toLowerCase()}
-                      role="menuitem"
                     >
                       {item.label}
                     </a>

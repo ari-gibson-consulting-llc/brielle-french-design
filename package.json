@@ -39,7 +39,6 @@
     "snarkdown": "^2.0.0"
   },
   "devDependencies": {
-    "@cloudflare/pages-plugin-mailchannels": "^0.1.2",
     "@cloudflare/workers-types": "^4.20230518.0",
     "@unocss/preset-web-fonts": "^0.53.5",
     "@unocss/reset": "^0.53.5",

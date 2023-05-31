@@ -34,9 +34,6 @@ dependencies:
     version: 2.0.0
 
 devDependencies:
-  '@cloudflare/pages-plugin-mailchannels':
-    specifier: ^0.1.2
-    version: 0.1.2
   '@cloudflare/workers-types':
     specifier: ^4.20230518.0
     version: 4.20230518.0
@@ -411,6 +408,7 @@ packages:
     dev: true
 
 <<<<<<< HEAD
+<<<<<<< HEAD
   /@cloudflare/workerd-darwin-64@1.20230628.0:
     resolution: {integrity: sha512-ndtsGCR3WKcNvq2eE2teQXcE+r7PwMh3jnyxPuc4/Fed4q3DQC++da4zNn8f+D+dLd7myifGeygbHic86vh4OA==}
 =======
@@ -418,6 +416,8 @@ packages:
     resolution: {integrity: sha512-xPZNM4NEhFkxnx6JNqoWzk3zgvyoPTFb5KbBz5Z1bc4X/D3gidR776WyUVQzR5OphzTqZfFiC9B8mYUyG0WEVg==}
     dev: true
 
+=======
+>>>>>>> aa668a8 (remove unneeded package)
   /@cloudflare/workerd-darwin-64@1.20230518.0:
     resolution: {integrity: sha512-reApIf2/do6GjLlajU6LbRYh8gm/XcaRtzGbF8jo5IzyDSsdStmfNuvq7qssZXG92219Yp1kuTgR9+D1GGZGbg==}
 >>>>>>> 39260f2 (rebuild lockfile)

@@ -7,13 +7,15 @@ import Logo from "../assets/about-logo.png";
 
 <Base>
   <main
-    class="relative z-10 mb-36 grid lg:grid-cols-3 lg:pl-28 xl:pl-1/5 min-h-[calc(100vh-12rem)] lg:pr-0 bg-white px-10"
+    class="xl:pl-1/5 relative z-10 mb-36 grid min-h-[calc(100vh-12rem)] bg-white px-10 lg:grid-cols-3 lg:pl-28 lg:pr-0"
   >
-    <article class="font-base text-gray-700 lg:mt-32 lg:row-start-1 lg:col-start-1 lg:col-end-2">
-      <h2 class="color-[#FF7DB8] mt-auto pb-12 text-6xl lg:text-8xl font-bold">
+    <article
+      class="font-base text-gray-700 lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:mt-32"
+    >
+      <h2 class="color-[#FF7DB8] mt-auto pb-12 text-6xl font-bold lg:text-8xl">
         Hello!
       </h2>
-      <p class="w-full leading-snug text-md sm:text-lg">
+      <p class="text-md w-full leading-snug sm:text-lg">
         I'm Brielle French. This is information about me. This is my design
         experience. These are my areas of interest. This is my philosophy and
         approach to design. This is a little bit of information about my
@@ -21,17 +23,17 @@ import Logo from "../assets/about-logo.png";
       </p>
     </article>
     <div
-      class="grid h-full items-end justify-items-end xl:row-start-1 col-start-2 col-end--1 xl:col-end--1 w-full"
+      class="col-end--1 xl:col-end--1 col-start-2 grid h-full w-full items-end justify-items-end xl:row-start-1"
     >
       <Image
         src={Headshot}
         alt="Brielle French"
-        class="lg:max-h-256 row-start-1 row-end--1 col-start-1 col-end--1"
+        class="lg:max-h-256 row-end--1 col-end--1 col-start-1 row-start-1"
       />
       <Image
         src={Logo}
         alt=""
-        class="lg:max-h-256 row-start-1 row-end--1 col-start-1 col-end--1 -z-20"
+        class="lg:max-h-256 row-end--1 col-end--1 -z-20 col-start-1 row-start-1"
       />
     </div>
   </main>

@@ -42,7 +42,6 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@cloudflare/pages-plugin-mailchannels": "^0.1.2",
     "@cloudflare/workers-types": "^4.20230518.0",
     "@types/minimasonry": "^1.3.2",
     "@unocss/preset-web-fonts": "^0.56.5",

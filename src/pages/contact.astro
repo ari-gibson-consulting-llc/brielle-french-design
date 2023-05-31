@@ -145,7 +145,7 @@ import Base from "../layouts/Base.astro";
 </script>
 
 <script>
-  import { validateContactFormInput } from "../lib/clientContactForm";
+  import { validateContactFormInput, submitForm } from "../lib/clientContactForm";
   
   declare const turnstile: any;
   declare const contactFormErrorsElement: HTMLSpanElement;
@@ -170,6 +170,9 @@ import Base from "../layouts/Base.astro";
       contactFormErrorsElement.classList.add("block");
       return;
     }
+
+    const turnstileResponse = turnstile.getResponse();
+    submitForm({ name, email, message, turnstileResponse })
   });
 </script>
 

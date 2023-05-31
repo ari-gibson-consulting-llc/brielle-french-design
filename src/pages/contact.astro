@@ -2,6 +2,12 @@
 import Base from "../layouts/Base.astro";
 ---
 
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=initTurnstile"
+  async
+  defer></script>
+
 <Base>
   <main class="base-main mt-4 md:mt-0 pb-12">
     <section class="bg-white">
@@ -32,6 +38,14 @@ import Base from "../layouts/Base.astro";
                     class="h-32 md:h-48"
                     id="message"
                     placeholder="Message"></textarea>
+                </div>
+
+                <div
+                  class="cf-turnstile hidden mx-auto pt-6 justify-center"
+                  data-theme="light"
+                  data-execution="execute"
+                  data-sitekey="0x4AAAAAAAFYTTLlDH8mtaAe"
+                >
                 </div>
 
                 <button
@@ -98,6 +112,23 @@ import Base from "../layouts/Base.astro";
     </section>
   </main>
 </Base>
+
+<script is:inline>
+  function initTurnstile() {
+    let turnstileActive = false;
+
+    document.querySelectorAll(".contact-form-input input").forEach((elem) => {
+      elem.addEventListener("focus", (e) => {
+        const cfTurnstile = document.querySelector(".cf-turnstile");
+        cfTurnstile.classList.remove("hidden");
+        cfTurnstile.classList.add("flex");
+        // @ts-ignore
+        turnstile.execute(cfTurnstile);
+        turnstileActive = true;
+      });
+    });
+  }
+</script>
 
 <style>
   .contact-form-input label {

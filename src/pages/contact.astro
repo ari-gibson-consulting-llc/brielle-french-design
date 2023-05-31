@@ -15,18 +15,18 @@ import Base from "../layouts/Base.astro";
             >
               <form class="mt-6">
                 <div class="contact-form-input flex-1">
-                  <label>Full Name</label>
-                  <input type="text" placeholder="John Doe" />
+                  <label for="name">Full Name</label>
+                  <input type="text" id="name" placeholder="John Doe" />
                 </div>
 
                 <div class="contact-form-input flex-1 mt-6">
-                  <label>Email Address</label>
-                  <input type="email" placeholder="johndoe@example.com" />
+                  <label for="email">Email Address</label>
+                  <input type="email" id="email" placeholder="johndoe@example.com" />
                 </div>
 
                 <div class="contact-form-input w-full mt-6">
-                  <label>Message</label>
-                  <textarea class="h-32 md:h-48" placeholder="Message"
+                  <label for="message">Message</label>
+                  <textarea class="h-32 md:h-48" id="message" placeholder="Message"
                   ></textarea>
                 </div>
 

@@ -1,7 +1,18 @@
 {
   "name": "brielle-french-design",
+  "author": {
+    "name": "Ari Gibson",
+    "email": "hi@arimgibson.com",
+    "url": "https://arimgibson.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ari-gibson-consulting-llc/brielle-french-design.git"
+  },
+  "homepage": "https://github.com/ari-gibson-consulting-llc/brielle-french-design/blob/main/README.md",
   "type": "module",
   "version": "0.0.1",
+  "license": "MIT",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

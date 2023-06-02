@@ -40,14 +40,14 @@ import Base from "../layouts/Base.astro";
                 </div>
 
                 <div
-                  class="cf-turnstile hidden mx-auto pt-6 justify-center"
+                  class="cf-turnstile mx-auto hidden justify-center pt-6"
                   data-theme="light"
                   data-execution="execute"
                   data-sitekey="0x4AAAAAAAFYTTLlDH8mtaAe"
                 >
                 </div>
 
-                <span id="contact-form-errors" class="text-red-600 hidden pt-6"
+                <span id="contact-form-errors" class="hidden pt-6 text-red-600"
                 ></span>
 
                 <button
@@ -118,7 +118,9 @@ import Base from "../layouts/Base.astro";
 </Base>
 
 <script is:inline>
-  const contactFormErrorsElement = document.querySelector("#contact-form-errors");
+  const contactFormErrorsElement = document.querySelector(
+    "#contact-form-errors"
+  );
 
   function initTurnstile() {
     let turnstileActive = false;
@@ -143,35 +145,47 @@ import Base from "../layouts/Base.astro";
 </script>
 
 <script>
-  import { validateContactFormInput, submitForm } from "../lib/clientContactForm";
-  
+  import {
+    validateContactFormInput,
+    submitForm,
+  } from "../lib/clientContactForm";
+
   declare const turnstile: any;
   declare const contactFormErrorsElement: HTMLSpanElement;
-  
-  document.querySelector("#contact-form")!.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const name = (document.querySelector("#name") as HTMLInputElement).value;
-    const email = (document.querySelector("#email") as HTMLInputElement).value;
-    // prettier-ignore
-    const message = (document.querySelector("#message") as HTMLInputElement).value;
-    const contactFormErrors = validateContactFormInput({
-      name,
-      email,
-      message,
+
+  document
+    .querySelector("#contact-form")!
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = (document.querySelector("#name") as HTMLInputElement).value;
+      const email = (document.querySelector("#email") as HTMLInputElement)
+        .value;
+      const message = (document.querySelector("#message") as HTMLInputElement)
+        .value;
+      const contactFormErrors = validateContactFormInput({
+        name,
+        email,
+        message,
+      });
+
+      if (contactFormErrors.length > 0) {
+        turnstile.reset();
+        turnstile.execute(document.querySelector(".cf-turnstile"));
+        contactFormErrorsElement.innerHTML = contactFormErrors.join(",");
+        contactFormErrorsElement.classList.remove("hidden");
+        contactFormErrorsElement.classList.add("block");
+        return;
+      }
+
+      const turnstileResponse = turnstile.getResponse();
+
+      const submitFormRequest = await submitForm({
+        name,
+        email,
+        message,
+        turnstileResponse,
+      });
     });
-
-    if (contactFormErrors.length > 0) {
-      turnstile.reset();
-      turnstile.execute(document.querySelector(".cf-turnstile"));
-      contactFormErrorsElement.innerHTML = contactFormErrors.join(",");
-      contactFormErrorsElement.classList.remove("hidden");
-      contactFormErrorsElement.classList.add("block");
-      return;
-    }
-
-    const turnstileResponse = turnstile.getResponse();
-    submitForm({ name, email, message, turnstileResponse })
-  });
 </script>
 
 <style>

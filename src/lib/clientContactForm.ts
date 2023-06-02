@@ -9,7 +9,7 @@ type ContactFormSubmission = {
   email: string;
   message: string;
   turnstileResponse: string;
-}
+};
 
 export function validateContactFormInput(form: ContactForm): string[] {
   const requiredFields = ["name", "email", "message"] as const;

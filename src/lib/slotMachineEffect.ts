@@ -41,14 +41,14 @@ export class SlotMachineEffect {
     this.itemsContainer.classList.add("slot-machine--items-container");
 
     this.container.classList.add("slot-machine");
-    this.container.append(mask);
-    mask.append(this.itemsContainer);
+    this.container.appendChild(mask);
+    mask.appendChild(this.itemsContainer);
 
     this.wordList.map((text) => {
       const elem = document.createElement("div");
       elem.classList.add("slot-machine--item");
       elem.innerText = text;
-      this.itemsContainer.append(elem);
+      this.itemsContainer.appendChild(elem);
     });
   }
 

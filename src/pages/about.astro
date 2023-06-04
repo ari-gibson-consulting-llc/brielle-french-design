@@ -7,7 +7,7 @@ import Logo from "../assets/about-logo.png";
 
 <Base>
   <main
-    class="xl:pl-1/5 relative z-10 mb-36 grid min-h-[calc(100vh-12rem)] bg-white px-10 lg:grid-cols-3 lg:pl-28 lg:pr-0"
+    class="xl:pl-1/5 relative z-10 mb-36 grid lg:h-[calc(100vh-12rem)] min-h-[calc(100vh-12rem)] bg-white px-10 lg:grid-cols-3 lg:pl-28 lg:pr-0"
   >
     <article
       class="font-base text-gray-700 lg:col-start-1 lg:col-end-2 lg:row-start-1 lg:mt-32"
@@ -23,17 +23,17 @@ import Logo from "../assets/about-logo.png";
       </p>
     </article>
     <div
-      class="col-end--1 xl:col-end--1 col-start-2 grid h-full w-full items-end justify-items-end xl:row-start-1"
+      class="col-end--1 xl:col-end--1 col-start-2 grid h-full lg:h-[calc(100vh-12rem)] w-full items-end justify-items-end xl:row-start-1"
     >
       <Image
         src={Headshot}
         alt="Brielle French"
-        class="lg:max-h-256 row-end--1 col-end--1 col-start-1 row-start-1"
+        class="relative left-10 lg:static overflow-auto row-end--1 col-end--1 col-start-1 row-start-1"
       />
       <Image
         src={Logo}
         alt=""
-        class="lg:max-h-256 row-end--1 col-end--1 -z-20 col-start-1 row-start-1"
+        class="relative left-10 lg:static overflow-auto row-end--1 col-end--1 -z-10 col-start-1 row-start-1"
       />
     </div>
   </main>

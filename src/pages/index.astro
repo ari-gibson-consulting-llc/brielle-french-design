@@ -1,17 +1,21 @@
 ---
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
-import Logo from "../assets/logo-big.png";
 ---
 
 <Base>
-  <main class="relative z-10 mb-36 block h-[calc(100vh-12rem)] bg-white">
+  <main class="relative z-10 mb-36 block min-h-[calc(100vh-12rem)] bg-white">
     <div class="grid h-full justify-center px-10 md:grid-cols-10">
       <div
         class="md:col-end--1 z-[-100] flex h-full items-center justify-center md:col-start-4 md:row-start-1 lg:ml-[-200px] lg:w-auto"
       >
         <!-- Image is purely decorative, no alt tag needed -->
-        <Image src={Logo} alt="" class="md:max-w-200 sm:w-4/5 md:w-full" />
+        <img
+          src="home-page-logo.svg"
+          alt=""
+          class="md:max-w-200 sm:w-4/5 md:w-full"
+          onload="SVGInject(this)"
+        />
       </div>
       <div
         class="font-base leading-16 lg:leading-30 h-full justify-center text-left text-5xl font-bold sm:text-6xl md:col-start-1 md:col-end-6 md:row-start-1 md:flex md:flex-col md:items-end md:text-right md:text-7xl lg:text-8xl"

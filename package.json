@@ -29,20 +29,20 @@
   "dependencies": {
     "@astrojs/alpinejs": "^0.2.2",
     "@types/alpinejs": "^3.7.1",
-    "alpinejs": "^3.12.1",
-    "astro": "^2.5.5",
+    "alpinejs": "^3.12.2",
+    "astro": "^2.5.7",
     "astro-seo": "^0.7.2",
     "sass": "^1.62.1",
     "sharp": "^0.32.1"
   },
   "devDependencies": {
-    "@unocss/preset-web-fonts": "^0.52.4",
-    "@unocss/reset": "^0.52.4",
-    "@unocss/transformer-directives": "^0.52.4",
+    "@unocss/preset-web-fonts": "^0.53.0",
+    "@unocss/reset": "^0.53.0",
+    "@unocss/transformer-directives": "^0.53.0",
     "prettier": "^2.8.8",
-    "prettier-plugin-astro": "^0.9.1",
+    "prettier-plugin-astro": "^0.10.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "unocss": "^0.52.4",
+    "unocss": "^0.53.0",
     "wrangler": "^3.0.1"
   }
 }

@@ -57,8 +57,9 @@ export const aboutPage = {
   ),
 };
 
-// export const homePage = (await contentfulClient.getEntry<ContentfulHome>(""))
-//   .fields;
+export const homePage = (
+  await contentfulClient.getEntry<ContentfulHome>("dWhvw9XdtMQizE6qhrAU0")
+).fields;
 
 // export const services = (
 //   await contentfulClient.getEntries<ContentfulServices>({

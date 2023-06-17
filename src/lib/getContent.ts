@@ -1,11 +1,11 @@
 import contentful from "contentful";
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
+import snarkdown from "snarkdown";
 
 interface ContentfulAbout {
   contentTypeId: "aboutPage";
   fields: {
     title: contentful.EntryFieldTypes.Text;
-    bioText: contentful.EntryFieldTypes.RichText;
+    bioText: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -45,12 +45,17 @@ const contentfulClient = contentful.createClient({
   host: import.meta.env.DEV ? "preview.contentful.com" : "cdn.contentful.com",
 });
 
-// const aboutPageFields = (await contentfulClient.getEntry<ContentfulAbout>(""))
-//   .fields;
+const aboutPageFields = (
+  await contentfulClient.getEntry<ContentfulAbout>("5nkZkXaMHCn8A5XxA3Uibv")
+).fields;
 
-// export const aboutPage = {
-//   bioText: documentToHtmlString(aboutPageFields.bioText),
-// };
+export const aboutPage = {
+  title: aboutPageFields.title,
+  bioText: snarkdown(aboutPageFields.bioText).replace(
+    /<br \/>/g,
+    "<br /><br />"
+  ),
+};
 
 // export const homePage = (await contentfulClient.getEntry<ContentfulHome>(""))
 //   .fields;

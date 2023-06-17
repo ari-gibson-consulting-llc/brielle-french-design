@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -8,9 +8,6 @@ dependencies:
   '@astrojs/alpinejs':
     specifier: ^0.2.2
     version: 0.2.2(@types/alpinejs@3.7.1)(alpinejs@3.12.2)
-  '@contentful/rich-text-html-renderer':
-    specifier: ^16.1.0
-    version: 16.1.0
   '@types/alpinejs':
     specifier: ^3.7.1
     version: 3.7.1
@@ -32,6 +29,9 @@ dependencies:
   sharp:
     specifier: ^0.32.1
     version: 0.32.1
+  snarkdown:
+    specifier: ^2.0.0
+    version: 2.0.0
 
 devDependencies:
   '@unocss/preset-web-fonts':
@@ -448,14 +448,6 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-
-  /@contentful/rich-text-html-renderer@16.1.0:
-    resolution: {integrity: sha512-U50mWxWysQQYWWL2fL1ExUA2r+543LaggNizb3O61ay2Y0ypyf+D6+oxGIx56WHRffwzXW0dSoP/giXmOvWB/w==}
-    engines: {node: '>=6.0.0'}
-    dependencies:
-      '@contentful/rich-text-types': 16.2.0
-      escape-html: 1.0.3
-    dev: false
 
   /@contentful/rich-text-types@16.2.0:
     resolution: {integrity: sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw==}
@@ -1984,10 +1976,6 @@ packages:
   /escalade@3.1.1:
     resolution: {integrity: sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==}
     engines: {node: '>=6'}
-    dev: false
-
-  /escape-html@1.0.3:
-    resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
     dev: false
 
   /escape-string-regexp@1.0.5:
@@ -3792,6 +3780,10 @@ packages:
   /slash@4.0.0:
     resolution: {integrity: sha512-3dOsAHXXUkQTpOYcoAxLIorMTp4gIQr5IW3iVb7A7lFIp0VHhnynm9izx6TssdrIcVIESAlVjtnO2K8bg+Coew==}
     engines: {node: '>=12'}
+    dev: false
+
+  /snarkdown@2.0.0:
+    resolution: {integrity: sha512-MgL/7k/AZdXCTJiNgrO7chgDqaB9FGM/1Tvlcenenb7div6obaDATzs16JhFyHHBGodHT3B7RzRc5qk8pFhg3A==}
     dev: false
 
   /source-map-js@1.0.2:

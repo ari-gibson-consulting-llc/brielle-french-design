@@ -28,14 +28,14 @@
   },
   "dependencies": {
     "@astrojs/alpinejs": "^0.2.2",
-    "@contentful/rich-text-html-renderer": "^16.1.0",
     "@types/alpinejs": "^3.7.1",
     "alpinejs": "^3.12.2",
     "astro": "^2.6.4",
     "astro-seo": "^0.7.4",
     "contentful": "^10.2.4",
     "sass": "^1.63.4",
-    "sharp": "^0.32.1"
+    "sharp": "^0.32.1",
+    "snarkdown": "^2.0.0"
   },
   "devDependencies": {
     "@unocss/preset-web-fonts": "^0.53.1",

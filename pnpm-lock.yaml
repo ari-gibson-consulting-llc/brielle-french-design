@@ -7,14 +7,10 @@ settings:
 dependencies:
   '@astrojs/alpinejs':
     specifier: ^0.2.2
-<<<<<<< HEAD
     version: 0.2.2(@types/alpinejs@3.7.1)(alpinejs@3.12.2)
-=======
-    version: 0.2.2(@types/alpinejs@3.7.1)(alpinejs@3.12.1)
   '@contentful/rich-text-html-renderer':
-    specifier: ^16.0.5
-    version: 16.0.5
->>>>>>> a44eb86 (install contentful, update env)
+    specifier: ^16.1.0
+    version: 16.1.0
   '@types/alpinejs':
     specifier: ^3.7.1
     version: 3.7.1
@@ -25,16 +21,11 @@ dependencies:
     specifier: ^2.6.4
     version: 2.6.4(sass@1.63.4)(sharp@0.32.1)
   astro-seo:
-<<<<<<< HEAD
     specifier: ^0.7.4
     version: 0.7.4
-=======
-    specifier: ^0.7.2
-    version: 0.7.2
   contentful:
-    specifier: ^10.2.2
-    version: 10.2.2
->>>>>>> a44eb86 (install contentful, update env)
+    specifier: ^10.2.4
+    version: 10.2.4
   sass:
     specifier: ^1.63.4
     version: 1.63.4
@@ -407,7 +398,6 @@ packages:
       to-fast-properties: 2.0.0
     dev: false
 
-<<<<<<< HEAD
   /@cloudflare/kv-asset-handler@0.2.0:
     resolution: {integrity: sha512-MVbXLbTcAotOPUj0pAMhVtJ+3/kFkwJqc5qNOleOZTv6QkZZABDMS21dSrSlVswEHwrpWC03e4fWytjqKvuE2A==}
     dependencies:
@@ -458,9 +448,9 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
-=======
-  /@contentful/rich-text-html-renderer@16.0.5:
-    resolution: {integrity: sha512-iL5I6P2yUx7WsyBZLzbQxmEmL0V80baQv08RA1CqfLDt2OR2qU2h/Ii2NHQMl8xHQS07l27Y6jbbCACvVStCbw==}
+
+  /@contentful/rich-text-html-renderer@16.1.0:
+    resolution: {integrity: sha512-U50mWxWysQQYWWL2fL1ExUA2r+543LaggNizb3O61ay2Y0ypyf+D6+oxGIx56WHRffwzXW0dSoP/giXmOvWB/w==}
     engines: {node: '>=6.0.0'}
     dependencies:
       '@contentful/rich-text-types': 16.2.0
@@ -471,7 +461,6 @@ packages:
     resolution: {integrity: sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw==}
     engines: {node: '>=6.0.0'}
     dev: false
->>>>>>> a44eb86 (install contentful, update env)
 
   /@emmetio/abbreviation@2.3.3:
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}
@@ -1759,8 +1748,8 @@ packages:
       qs: 6.11.2
     dev: false
 
-  /contentful@10.2.2:
-    resolution: {integrity: sha512-WhCuK1tuHjAsA8BgvHFVBi2D4PFxBHiOs6jjogKryfb/HiIGDqRQB00hTuQ0EuYaZp4qkL2B3k+YajMJ9TvAXg==}
+  /contentful@10.2.4:
+    resolution: {integrity: sha512-pdqxVHiASwo2ueZGyL55oVwHooQHAUjgN+LsAjMWQ7nl211zbOt1gBa5IdKroBuHfjvkc9RMCGL7kCun9bpMBA==}
     engines: {node: '>=12'}
     dependencies:
       '@contentful/rich-text-types': 16.2.0
@@ -1768,7 +1757,7 @@ packages:
       contentful-resolve-response: 1.7.0
       contentful-sdk-core: 7.1.0
       json-stringify-safe: 5.0.1
-      type-fest: 3.11.0
+      type-fest: 3.12.0
     transitivePeerDependencies:
       - debug
     dev: false
@@ -2183,14 +2172,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: false
 
-<<<<<<< HEAD
-  /get-source@2.0.12:
-    resolution: {integrity: sha512-X5+4+iD+HoSeEED+uwrQ07BOQr0kEDFMVqqpBuI+RaZBpBpHCuXxo70bjar6f0b0u/DQJsJ7ssurpP0V60Az+w==}
-    dependencies:
-      data-uri-to-buffer: 2.0.2
-      source-map: 0.6.1
-    dev: true
-=======
   /get-intrinsic@1.2.1:
     resolution: {integrity: sha512-2DcsyfABl+gVHEfCOaTrWgyt+tb6MSEGmKq+kI5HwLbIYgjgmMcV8KQ41uaKz1xxUcn9tJtgFbQUEVcEbd0FYw==}
     dependencies:
@@ -2199,7 +2180,13 @@ packages:
       has-proto: 1.0.1
       has-symbols: 1.0.3
     dev: false
->>>>>>> a44eb86 (install contentful, update env)
+
+  /get-source@2.0.12:
+    resolution: {integrity: sha512-X5+4+iD+HoSeEED+uwrQ07BOQr0kEDFMVqqpBuI+RaZBpBpHCuXxo70bjar6f0b0u/DQJsJ7ssurpP0V60Az+w==}
+    dependencies:
+      data-uri-to-buffer: 2.0.2
+      source-map: 0.6.1
+    dev: true
 
   /get-stream@6.0.1:
     resolution: {integrity: sha512-ts6Wi+2j3jQjqi70w5AlN8DFnkSwC+MqmxEzdEALB2qXZYV3X/b1CTfgPLGJNMeAWxdPfU8FO1ms3NUfaHCPYg==}
@@ -3168,17 +3155,12 @@ packages:
       path-key: 4.0.0
     dev: false
 
-<<<<<<< HEAD
-  /ofetch@1.1.0:
-    resolution: {integrity: sha512-yjq2ZUUMto1ITpge2J5vNlUfteLzxfHn9aJC55WtVGD3okKwSfPoLaKpcHXmmKd2kZZUGo+jdkFuuj09Blyeig==}
-=======
   /object-inspect@1.12.3:
     resolution: {integrity: sha512-geUvdk7c+eizMNUDkRpW1wJwgfOiOeHbxBR/hLXK1aT6zmVSO0jsQcs7fj6MGw89jC/cjGfLcNOrtMYtGqm81g==}
     dev: false
 
-  /ofetch@1.0.1:
-    resolution: {integrity: sha512-icBz2JYfEpt+wZz1FRoGcrMigjNKjzvufE26m9+yUiacRQRHwnNlGRPiDnW4op7WX/MR6aniwS8xw8jyVelF2g==}
->>>>>>> a44eb86 (install contentful, update env)
+  /ofetch@1.1.0:
+    resolution: {integrity: sha512-yjq2ZUUMto1ITpge2J5vNlUfteLzxfHn9aJC55WtVGD3okKwSfPoLaKpcHXmmKd2kZZUGo+jdkFuuj09Blyeig==}
     dependencies:
       destr: 1.2.2
       node-fetch-native: 1.2.0
@@ -4055,20 +4037,14 @@ packages:
     engines: {node: '>=12.20'}
     dev: false
 
-<<<<<<< HEAD
-  /typescript@5.1.3:
-    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
-    engines: {node: '>=14.17'}
-=======
-  /type-fest@3.11.0:
-    resolution: {integrity: sha512-JaPw5U9ixP0XcpUbQoVSbxSDcK/K4nww20C3kjm9yE6cDRRhptU28AH60VWf9ltXmCrIfIbtt9J+2OUk2Uqiaw==}
+  /type-fest@3.12.0:
+    resolution: {integrity: sha512-qj9wWsnFvVEMUDbESiilKeXeHL7FwwiFcogfhfyjmvT968RXSvnl23f1JOClTHYItsi7o501C/7qVllscUP3oA==}
     engines: {node: '>=14.16'}
     dev: false
 
-  /typescript@5.0.4:
-    resolution: {integrity: sha512-cW9T5W9xY37cc+jfEnaUvX91foxtHkza3Nw3wkoF4sSlKn0MONdkdEndig/qPBWXNkmplh3NzayQzCiHM4/hqw==}
-    engines: {node: '>=12.20'}
->>>>>>> a44eb86 (install contentful, update env)
+  /typescript@5.1.3:
+    resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
+    engines: {node: '>=14.17'}
     hasBin: true
     dev: false
 

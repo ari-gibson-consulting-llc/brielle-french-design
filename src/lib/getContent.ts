@@ -4,6 +4,7 @@ import { documentToHtmlString } from "@contentful/rich-text-html-renderer";
 interface ContentfulAbout {
   contentTypeId: "aboutPage";
   fields: {
+    title: contentful.EntryFieldTypes.Text;
     bioText: contentful.EntryFieldTypes.RichText;
   };
 }
@@ -21,8 +22,8 @@ interface ContentfulServices {
   contentTypeId: "services";
   fields: {
     nameOfService: contentful.EntryFieldTypes.Symbol;
-    descriptionOfService: contentful.EntryFieldTypes.Text;
     slug: contentful.EntryFieldTypes.Symbol;
+    descriptionOfService: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -32,7 +33,7 @@ interface ContentfulPortfolioEntry {
     title: contentful.EntryFieldTypes.Symbol;
     description: contentful.EntryFieldTypes.Text;
     slug: contentful.EntryFieldTypes.Symbol;
-    image: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
   };
 }
 

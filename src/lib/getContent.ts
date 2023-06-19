@@ -39,13 +39,37 @@ interface ContentfulServicesSection {
   };
 }
 
-interface ContentfulPortfolioEntry {
+interface ContentfulPortfolioEntryStaticImages {
   contentTypeId: "portfolioEntry";
   fields: {
     title: contentful.EntryFieldTypes.Symbol;
-    description: contentful.EntryFieldTypes.Text;
     slug: contentful.EntryFieldTypes.Symbol;
+    description: contentful.EntryFieldTypes.Text;
     images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+  };
+}
+
+interface ContentfulPortfolioEntryCarousels {
+  contentTypeId: "portfolioEntry";
+  fields: {
+    title: contentful.EntryFieldTypes.Symbol;
+    slug: contentful.EntryFieldTypes.Symbol;
+    description: contentful.EntryFieldTypes.Text;
+    firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    thirdCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+  };
+}
+
+interface ContentfulPortfolioEntryStaticImagesCarousels {
+  contentTypeId: "portfolioEntry";
+  fields: {
+    title: contentful.EntryFieldTypes.Symbol;
+    slug: contentful.EntryFieldTypes.Symbol;
+    description: contentful.EntryFieldTypes.Text;
+    images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
   };
 }
 

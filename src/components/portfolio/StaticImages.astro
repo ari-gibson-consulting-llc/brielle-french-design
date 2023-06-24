@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import type { Asset } from "contentful";
 import type { ContentfulPortfolioEntryStaticImages } from "../../lib/getContent";
 
-type Props = Pick<ContentfulPortfolioEntryStaticImages["fields"], "images">
+type Props = Pick<ContentfulPortfolioEntryStaticImages["fields"], "images">;
 
 const { images } = Astro.props;
 ---

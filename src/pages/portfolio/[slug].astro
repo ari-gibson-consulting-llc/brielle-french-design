@@ -1,0 +1,51 @@
+---
+import { portfolioEntries } from "../../lib/getContent";
+import Base from "../../layouts/Base.astro";
+import StaticImages from "../../components/portfolio/StaticImages.astro";
+import Carousels from "../../components/portfolio/Carousels.astro";
+import StaticImagesCarousels from "../../components/portfolio/StaticImagesCarousels.astro";
+import type { EntryFieldTypes } from "contentful";
+
+export async function getStaticPaths() {
+  return portfolioEntries;
+}
+
+type PortfolioEntryProps = (typeof portfolioEntries)[0]["props"];
+
+interface Props extends PortfolioEntryProps {
+  images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+  firstCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+  secondCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+  thirdCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+}
+
+const { title, description, type } = Astro.props;
+---
+
+<Base>
+  <main
+    class="relative z-10 mb-36 grid grid-rows-2 min-h-[calc(100vh-12rem)] bg-white px-10 lg:grid-rows-1 lg:grid-cols-2"
+  >
+    <div class="bg-pink w-full h-full">
+      {
+        type === "portfolioEntryStaticImages" ? (
+          <StaticImages images={Astro.props.images!} />
+        ) : type === "portfolioEntryCarousels" ? (
+          <Carousels firstCarousel={Astro.props.firstCarousel!} secondCarousel={Astro.props.secondCarousel!} thirdCarousel={Astro.props.thirdCarousel!} />
+        ) : <StaticImagesCarousels images={Astro.props.images!} firstCarousel={Astro.props.firstCarousel!} secondCarousel={Astro.props.secondCarousel!} />
+      }
+    </div>
+    <article
+      class="font-base text-gray-700 row-start-1 lg:col-start-2 mx-8 lg:my-8"
+    >
+      <h2
+        set:html={title}
+        class="color-[#FF7DB8] mt-auto pb-12 text-4xl font-bold lg:text-6xl"
+      />
+      <p
+        set:html={description}
+        class="text-md w-full leading-snug sm:text-lg"
+      />
+    </article>
+  </main>
+</Base>

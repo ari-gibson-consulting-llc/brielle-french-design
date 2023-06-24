@@ -1,0 +1,25 @@
+---
+import { Image } from "astro:assets";
+import type { Asset } from "contentful";
+import type { ContentfulPortfolioEntryCarousels } from "../../lib/getContent";
+
+type Props = Pick<
+  ContentfulPortfolioEntryCarousels["fields"],
+  "firstCarousel" | "secondCarousel" | "thirdCarousel"
+>;
+
+const { firstCarousel, secondCarousel, thirdCarousel } = Astro.props;
+---
+
+{
+  // @ts-ignore
+  images.map((image) => (
+    <Image
+      class="pb-4"
+      src={image.fields.file.url}
+      alt={image.fields.title}
+      width={image.fields.file.details.image.width}
+      height={image.fields.file.details.image.height}
+    />
+  ))
+}

@@ -24,19 +24,29 @@ const { title, description, type } = Astro.props;
 
 <Base>
   <main
-    class="relative z-10 mb-36 grid grid-rows-2 min-h-[calc(100vh-12rem)] bg-white px-10 lg:grid-rows-1 lg:grid-cols-2"
+    class="relative z-10 mb-36 grid min-h-[calc(100vh-12rem)] grid-rows-2 bg-white px-10 lg:grid-cols-2 lg:grid-rows-1"
   >
-    <div class="bg-pink w-full h-full">
+    <div class="bg-pink h-full w-full">
       {
         type === "portfolioEntryStaticImages" ? (
           <StaticImages images={Astro.props.images!} />
         ) : type === "portfolioEntryCarousels" ? (
-          <Carousels firstCarousel={Astro.props.firstCarousel!} secondCarousel={Astro.props.secondCarousel!} thirdCarousel={Astro.props.thirdCarousel!} />
-        ) : <StaticImagesCarousels images={Astro.props.images!} firstCarousel={Astro.props.firstCarousel!} secondCarousel={Astro.props.secondCarousel!} />
+          <Carousels
+            firstCarousel={Astro.props.firstCarousel!}
+            secondCarousel={Astro.props.secondCarousel!}
+            thirdCarousel={Astro.props.thirdCarousel!}
+          />
+        ) : (
+          <StaticImagesCarousels
+            images={Astro.props.images!}
+            firstCarousel={Astro.props.firstCarousel!}
+            secondCarousel={Astro.props.secondCarousel!}
+          />
+        )
       }
     </div>
     <article
-      class="font-base text-gray-700 row-start-1 lg:col-start-2 mx-8 lg:my-8"
+      class="font-base row-start-1 mx-8 text-gray-700 lg:col-start-2 lg:my-8"
     >
       <h2
         set:html={title}

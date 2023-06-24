@@ -134,22 +134,24 @@ export const portfolioEntries = await (async () => {
     }),
   ]);
 
-  const entryFields = entryCollections.map((collection) =>
-    collection.items.map((entry) => ({
-      params: {
-        slug: entry.fields.slug,
-      },
-      props: {
-        ...omit("slug", entry.fields),
-        type: entry.sys.contentType.sys.id,
-        title: entry.fields.title,
-        description: snarkdown(entry.fields.description).replace(
-          /<br \/>/g,
-          "<br /><br />"
-        ),
-      },
-    }))
-  ).flat();
+  const entryFields = entryCollections
+    .map((collection) =>
+      collection.items.map((entry) => ({
+        params: {
+          slug: entry.fields.slug,
+        },
+        props: {
+          ...omit("slug", entry.fields),
+          type: entry.sys.contentType.sys.id,
+          title: entry.fields.title,
+          description: snarkdown(entry.fields.description).replace(
+            /<br \/>/g,
+            "<br /><br />"
+          ),
+        },
+      }))
+    )
+    .flat();
 
   return entryFields;
 })();

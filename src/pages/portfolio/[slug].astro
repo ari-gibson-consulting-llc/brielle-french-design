@@ -10,14 +10,14 @@ export async function getStaticPaths() {
   return portfolioEntries;
 }
 
-type PortfolioEntryProps = (typeof portfolioEntries)[0]["props"];
+type Props = (typeof portfolioEntries)[0]["props"];
 
-interface Props extends PortfolioEntryProps {
-  images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
-  firstCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
-  secondCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
-  thirdCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
-}
+// interface Props extends PortfolioEntryProps {
+//   // images?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+//   // firstCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+//   // secondCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+//   // thirdCarousel?: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>;
+// }
 
 const { title, description, type } = Astro.props;
 ---

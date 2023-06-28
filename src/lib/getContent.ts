@@ -73,6 +73,53 @@ export interface ContentfulPortfolioEntryStaticImagesCarousels {
   };
 }
 
+type ContentfulAssetArr = (
+  | contentful.UnresolvedLink<"Asset">
+  | contentful.Asset<undefined, string>
+)[];
+
+interface BasePortfolioEntry {
+  params: {
+    slug: string;
+  };
+  props: {
+    title: string;
+    description: string;
+  };
+}
+
+type Prettify<T> = {
+  [K in keyof T]: T[K];
+} & {};
+
+type PortfolioEntryStaticImages = BasePortfolioEntry & {
+  props: {
+    type: "portfolioEntryStaticImages";
+    images: ContentfulAssetArr
+  };
+}
+
+type PortfolioEntryCarousels = BasePortfolioEntry & {
+  props: {
+    type: "portfolioEntryCarousels";
+    firstCarousel: ContentfulAssetArr;
+    secondCarousel?: ContentfulAssetArr;
+    thirdCarousel?: ContentfulAssetArr;
+  };
+}
+
+type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
+  props: {
+    type: "portfolioEntryStaticImagesCarousels";
+    images: ContentfulAssetArr;
+    firstCarousel: ContentfulAssetArr;
+    secondCarousel?: ContentfulAssetArr;
+  };
+}
+
+
+let x: Prettify<PortfolioEntryStaticImages>;
+
 const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.DEV
@@ -134,23 +181,27 @@ export const portfolioEntries = await (async () => {
     }),
   ]);
 
+  entryCollections[0].items[0].fields;
+
   const entryFields = entryCollections
-    .map((collection) =>
-      collection.items.map((entry) => ({
+    .map((collection) => {
+      const type = collection.items[0].sys.contentType.sys.id;
+      return collection.items.map((entry) => ({
         params: {
           slug: entry.fields.slug,
         },
         props: {
-          ...omit("slug", entry.fields),
-          type: entry.sys.contentType.sys.id,
+          // ...omit("slug", entry.fields),
+          ...entry.fields,
+          type,
           title: entry.fields.title,
           description: snarkdown(entry.fields.description).replace(
             /<br \/>/g,
             "<br /><br />"
           ),
         },
-      }))
-    )
+      }));
+    })
     .flat();
 
   return entryFields;

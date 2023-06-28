@@ -32,6 +32,7 @@
     "alpinejs": "^3.12.3",
     "astro": "^2.8.0",
     "astro-seo": "^0.7.4",
+    "blaze-slider": "^1.9.3",
     "contentful": "^10.3.3",
     "sass": "^1.63.6",
     "sharp": "^0.32.1",

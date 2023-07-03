@@ -61,8 +61,14 @@ export const homePage = (
   await contentfulClient.getEntry<ContentfulHome>("dWhvw9XdtMQizE6qhrAU0")
 ).fields;
 
-// export const services = (
-//   await contentfulClient.getEntries<ContentfulServices>({
-//     content_type: "services",
-//   })
-// ).items.map((item) => item.fields);
+export const services = (
+  await contentfulClient.getEntries<ContentfulServices>({
+    content_type: "services",
+  })
+).items.map((item) => ({
+  ...item.fields,
+  descriptionOfService: snarkdown(item.fields.descriptionOfService).replace(
+    /<br \/>/g,
+    "<br /><br />"
+  ),
+}));

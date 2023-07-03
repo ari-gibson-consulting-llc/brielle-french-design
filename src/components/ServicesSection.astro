@@ -1,0 +1,20 @@
+---
+interface Props {
+  nameOfService: string;
+  slug: string;
+  descriptionOfService: string;
+}
+
+const {
+  nameOfService: name,
+  slug,
+  descriptionOfService: description,
+} = Astro.props;
+---
+
+<div id={slug} data-service-section class="scroll-m-16">
+  <h2>{name}</h2>
+  <div class="bg-amber">
+    <p set:html={description} />
+  </div>
+</div>

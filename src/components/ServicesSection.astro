@@ -12,9 +12,9 @@ const {
 } = Astro.props;
 ---
 
-<div id={slug} data-service-section class="scroll-m-16">
-  <h2>{name}</h2>
-  <div class="bg-amber">
+<div id={slug} data-service-section class="font-base scroll-m-16">
+  <h2 class="text-xl sm:text-2xl pb-4">{name}</h2>
+  <div>
     <p set:html={description} />
   </div>
 </div>

@@ -1,7 +1,118 @@
 ---
 import Base from "../layouts/Base.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import { services } from "../lib/getContent";
+
+const sections: { [key: string]: string } = {};
+services.forEach((service) => {
+  sections[service.slug] = service.nameOfService;
+});
 ---
 
 <Base>
-  <main class="base-main"></main>
+  <main
+    class="base-main"
+  >
+    <div id="select-container" class="sticky top-0 mx-auto mb-8 w-3/4">
+      <select
+        id="pageSection"
+        class="border-r-24 font-base mt-1.5 h-10 w-full rounded-md border-gray-300 border-r-transparent bg-gray-100 px-4 font-bold text-gray-700 sm:text-sm"
+      >
+        {
+          Object.entries(sections).map((section) => (
+            <option value={section[0]}>{section[1]}</option>
+          ))
+        }
+      </select>
+    </div>
+
+    <div id="content" class="mx-4 sm:mx-12 md:mx-20">
+      {services.map((service) => <ServicesSection {...service} />)}
+    </div>
+  </main>
 </Base>
+
+<script>
+  /* Extends Element Objects with a function named scrollIntoViewPromise
+   *  options: the normal scrollIntoView options without any changes
+   */
+  // @ts-ignore
+  Element.prototype.scrollIntoViewPromise = function (options: any) {
+    // "this" refers to the current element (el.scrollIntoViewPromise(options): this = el)
+    this.scrollIntoView(options);
+
+    // I create a variable that can be read inside the returned object ({ then: f() }) to expose the current element
+    let parent = this;
+
+    // I return an object with just a property inside called then
+    // then contains a function which accept a function as parameter that will be execute when the scroll ends
+    return {
+      then: function (x: any) {
+        // Check out https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API for more informations
+        const intersectionObserver = new IntersectionObserver((entries) => {
+          let [entry] = entries;
+
+          // When the scroll ends (when our element is inside the screen)
+          if (entry.isIntersecting) {
+            // Execute the function into then parameter and stop observing the html element
+            setTimeout(() => {
+              x();
+              intersectionObserver.unobserve(parent);
+            }, 100);
+          }
+        });
+
+        // I start to observe the element where I scrolled
+        intersectionObserver.observe(parent);
+      },
+    };
+  };
+
+  let scrolling = false;
+
+  const sectionSelector = document.querySelector(
+    "#pageSection"
+  ) as HTMLSelectElement;
+
+  sectionSelector.addEventListener("change", async (e) => {
+    const { target } = e;
+    const section = (target as HTMLSelectElement).value;
+    scrolling = true;
+    // @ts-ignore
+    await document.querySelector(`#${section}`)!.scrollIntoViewPromise({
+      behavior: "smooth",
+    });
+    scrolling = false;
+  });
+
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        console.log(entry);
+        if (entry.isIntersecting && !scrolling) {
+          sectionSelector.value = entry.target.id;
+        }
+      });
+    },
+    {
+      rootMargin: "0px",
+      threshold: 1,
+    }
+  );
+
+  const selectContainer = document.querySelector(
+    "#select-container"
+  ) as HTMLDivElement;
+
+  const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+
+  document.querySelectorAll("[data-service-section]").forEach((section) => {
+    const sectionMargin =
+      screen.height +
+      selectContainer.offsetHeight -
+      (section as HTMLDivElement).offsetHeight -
+      4 * remSize;
+    (section as HTMLDivElement).style.marginBottom = `${sectionMargin}px`;
+    observer.observe(section);
+  });
+</script>

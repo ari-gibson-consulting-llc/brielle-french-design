@@ -24,9 +24,12 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
 <Base>
   <main
-    class="base-main"
+    class="base-main lg:grid lg:grid-cols-20"
   >
-    <div id="select-container" class="sticky top-0 mx-auto mb-8 w-3/4">
+    <div
+      id="select-container"
+      class="sticky top-0 mx-auto mb-8 w-3/4 lg:hidden"
+    >
       <select
         id="pageSection"
         class="border-r-24 font-base mt-1.5 h-10 w-full rounded-md border-gray-300 border-r-transparent bg-gray-100 px-4 font-bold text-gray-700 sm:text-sm"
@@ -40,7 +43,31 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
       </select>
     </div>
 
-    <div id="content" class="mx-4 sm:mx-12 md:mx-20">
+    <div
+      id="sidebar"
+      class="hidden lg:col-start-1 lg:col-end-8 lg:row-start-1 bg-#3DBFAF sticky top-0 h-100vh w-full lg:flex flex-col-reverse"
+    >
+      <div class="pt-48"></div>
+      <!-- <h2 class="fixed">Some text</h2> -->
+      {
+        servicesPage.sections.map((service) => {
+          const { slug, nameOfService } = service;
+          return (
+            <a
+              href={`#${slug}`}
+              class="text-white font-base font-bold lowercase text-2xl pl-6 xl:pl-24 py-4"
+            >
+              {nameOfService}
+            </a>
+          );
+        })
+      }
+    </div>
+
+    <article
+      id="content"
+      class="mx-4 sm:mx-12 md:mx-20 lg:row-start-1 lg:col-start-8 lg:col-end-20"
+    >
       <ServicesSection
         title={servicesPage.title}
         slug={servicesPage.dropdownSlug}
@@ -51,7 +78,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
           <ServicesSection {...standardizeServiceSection(service)} />
         ))
       }
-    </div>
+    </article>
   </main>
 </Base>
 

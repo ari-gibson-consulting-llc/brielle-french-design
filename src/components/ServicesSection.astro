@@ -5,11 +5,7 @@ interface Props {
   description: string;
 }
 
-const {
-  title,
-  slug,
-  description,
-} = Astro.props;
+const { title, slug, description } = Astro.props;
 ---
 
 <div id={slug} data-service-section class="font-base scroll-m-16">

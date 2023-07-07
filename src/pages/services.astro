@@ -45,7 +45,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
     <div
       id="sidebar"
-      class="hidden lg:col-start-1 lg:col-end-8 lg:row-start-1 bg-#3DBFAF sticky top-0 h-100vh w-full lg:flex flex-col-reverse"
+      class="bg-#3DBFAF h-100vh sticky top-0 hidden w-full flex-col-reverse lg:col-start-1 lg:col-end-8 lg:row-start-1 lg:flex"
     >
       <div class="pt-48"></div>
       <!-- <h2 class="fixed">Some text</h2> -->
@@ -55,7 +55,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
           return (
             <a
               href={`#${slug}`}
-              class="text-white font-base font-bold lowercase text-2xl pl-6 xl:pl-24 py-4"
+              class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white xl:pl-24"
             >
               {nameOfService}
             </a>
@@ -66,7 +66,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
     <article
       id="content"
-      class="mx-4 sm:mx-12 md:mx-20 lg:row-start-1 lg:col-start-8 lg:col-end-20"
+      class="lg:col-end-20 mx-4 sm:mx-12 md:mx-20 lg:col-start-8 lg:row-start-1"
     >
       <ServicesSection
         title={servicesPage.title}

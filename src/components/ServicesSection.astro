@@ -1,20 +1,18 @@
 ---
 interface Props {
-  nameOfService: string;
-  slug: string;
-  descriptionOfService: string;
+  title: string;
+  slug?: string;
+  description: string;
 }
 
 const {
-  nameOfService: name,
+  title,
   slug,
-  descriptionOfService: description,
+  description,
 } = Astro.props;
 ---
 
 <div id={slug} data-service-section class="font-base scroll-m-16">
-  <h2 class="pb-4 text-xl sm:text-2xl">{name}</h2>
-  <div>
-    <p set:html={description} />
-  </div>
+  <h2 class="pb-4 text-xl sm:text-2xl">{title}</h2>
+  <p set:html={description} />
 </div>

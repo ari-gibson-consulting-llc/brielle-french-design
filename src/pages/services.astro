@@ -1,12 +1,25 @@
 ---
 import Base from "../layouts/Base.astro";
 import ServicesSection from "../components/ServicesSection.astro";
-import { services } from "../lib/getContent";
+import { servicesPage as servicesPageUndefined } from "../lib/getContent";
+
+type ServicesPage = Omit<typeof servicesPageUndefined, "sections"> & {
+  sections: Array<NonNullable<(typeof servicesPageUndefined.sections)[0]>>;
+};
+const servicesPage = servicesPageUndefined as ServicesPage;
 
 const sections: { [key: string]: string } = {};
-services.forEach((service) => {
-  sections[service.slug] = service.nameOfService;
+servicesPage.sections.forEach((section) => {
+  sections[section.slug] = section.nameOfService;
 });
+
+function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
+  return {
+    title: service.nameOfService,
+    slug: service.slug,
+    description: service.descriptionOfService,
+  };
+}
 ---
 
 <Base>
@@ -18,6 +31,7 @@ services.forEach((service) => {
         id="pageSection"
         class="border-r-24 font-base mt-1.5 h-10 w-full rounded-md border-gray-300 border-r-transparent bg-gray-100 px-4 font-bold text-gray-700 sm:text-sm"
       >
+        <option value={servicesPage.dropdownSlug}>{servicesPage.title}</option>
         {
           Object.entries(sections).map((section) => (
             <option value={section[0]}>{section[1]}</option>
@@ -27,7 +41,16 @@ services.forEach((service) => {
     </div>
 
     <div id="content" class="mx-4 sm:mx-12 md:mx-20">
-      {services.map((service) => <ServicesSection {...service} />)}
+      <ServicesSection
+        title={servicesPage.title}
+        slug={servicesPage.dropdownSlug}
+        description={servicesPage.primaryText}
+      />
+      {
+        servicesPage.sections.map((service) => (
+          <ServicesSection {...standardizeServiceSection(service)} />
+        ))
+      }
     </div>
   </main>
 </Base>
@@ -88,7 +111,6 @@ services.forEach((service) => {
   const observer = new IntersectionObserver(
     (entries, observer) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting && !scrolling) {
           sectionSelector.value = entry.target.id;
         }

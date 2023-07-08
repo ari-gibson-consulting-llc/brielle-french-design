@@ -7,7 +7,14 @@ settings:
 dependencies:
   '@astrojs/alpinejs':
     specifier: ^0.2.2
+<<<<<<< Updated upstream
     version: 0.2.2(@types/alpinejs@3.7.2)(alpinejs@3.12.3)
+=======
+    version: 0.2.2(@types/alpinejs@3.7.2)(alpinejs@3.12.2)
+  '@glidejs/glide':
+    specifier: ^3.6.0
+    version: 3.6.0
+>>>>>>> Stashed changes
   '@types/alpinejs':
     specifier: ^3.7.2
     version: 3.7.2
@@ -37,6 +44,9 @@ dependencies:
     version: 2.0.0
 
 devDependencies:
+  '@types/glidejs__glide':
+    specifier: ^3.6.1
+    version: 3.6.1
   '@unocss/preset-web-fonts':
     specifier: ^0.53.5
     version: 0.53.5
@@ -1063,6 +1073,10 @@ packages:
     requiresBuild: true
     optional: true
 
+  /@glidejs/glide@3.6.0:
+    resolution: {integrity: sha512-47Aa+JmYjY4xTFpTtYCwrqirmI1arnp1UZETwtWpbTPisXUAuxrdJxKJLH8KHFWMsSrLi9+AcfyfzDIuO75rEA==}
+    dev: false
+
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
@@ -1204,6 +1218,10 @@ packages:
 
   /@types/estree@1.0.1:
     resolution: {integrity: sha512-LG4opVs2ANWZ1TJoKc937iMmNstM/d0ae1vNbnBvBhqCSezgVUOzcLCqbI5elV8Vy6WKwKjaqR+zO9VKirBBCA==}
+    dev: true
+
+  /@types/glidejs__glide@3.6.1:
+    resolution: {integrity: sha512-+HNjIPLtyRHhyswWSJ9hJjFMw6F9PEpwA+aZGKxh6RE8MceQMrTBeIj5JNc8GwnwdPwb/MLR6aKnkE87usxd9A==}
     dev: true
 
   /@types/hast@2.3.4:

@@ -76,6 +76,7 @@ interface BasePortfolioEntry {
   };
 }
 
+<<<<<<< Updated upstream
 type Prettify<T> = {
   [K in keyof T]: T[K];
 } & {};
@@ -86,6 +87,14 @@ type PortfolioEntryStaticImages = BasePortfolioEntry & {
     images: ContentfulAssetArr
   };
 }
+=======
+type PortfolioEntryStaticImages = BasePortfolioEntry & {
+  props: {
+    type: "portfolioEntryStaticImages";
+    images: ContentfulAssetArr;
+  };
+};
+>>>>>>> Stashed changes
 
 type PortfolioEntryCarousels = BasePortfolioEntry & {
   props: {
@@ -94,7 +103,11 @@ type PortfolioEntryCarousels = BasePortfolioEntry & {
     secondCarousel?: ContentfulAssetArr;
     thirdCarousel?: ContentfulAssetArr;
   };
+<<<<<<< Updated upstream
 }
+=======
+};
+>>>>>>> Stashed changes
 
 type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
   props: {
@@ -103,10 +116,14 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
     firstCarousel: ContentfulAssetArr;
     secondCarousel?: ContentfulAssetArr;
   };
+<<<<<<< Updated upstream
 }
 
 
 let x: Prettify<PortfolioEntryStaticImages>;
+=======
+};
+>>>>>>> Stashed changes
 
 const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,

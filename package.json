@@ -32,19 +32,19 @@
     "alpinejs": "^3.12.3",
     "astro": "^2.8.0",
     "astro-seo": "^0.7.4",
-    "contentful": "^10.3.1",
+    "contentful": "^10.3.3",
     "sass": "^1.63.6",
     "sharp": "^0.32.1",
     "snarkdown": "^2.0.0"
   },
   "devDependencies": {
-    "@unocss/preset-web-fonts": "^0.53.4",
-    "@unocss/reset": "^0.53.4",
-    "@unocss/transformer-directives": "^0.53.4",
+    "@unocss/preset-web-fonts": "^0.53.5",
+    "@unocss/reset": "^0.53.5",
+    "@unocss/transformer-directives": "^0.53.5",
     "prettier": "^2.8.8",
     "prettier-plugin-astro": "^0.10.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
-    "unocss": "^0.53.4",
+    "unocss": "^0.53.5",
     "wrangler": "^3.1.2"
   }
 }

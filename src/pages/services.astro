@@ -50,7 +50,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
       <div class="pt-42"></div>
       <a
         href={`#${servicesPage.dropdownSlug}`}
-        class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white scroll-m-512 xl:pl-24"
+        class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white xl:pl-24"
       >
         {servicesPage.title}
       </a>
@@ -71,7 +71,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
     <article
       id="content"
-      class="lg:col-end-20 mx-4 sm:mx-12 md:mx-20 lg:col-start-8 lg:row-start-1"
+      class="lg:col-end-20 mx-4 sm:mx-12 md:mx-20 lg:col-start-8 lg:row-start-1 lg:[&>*:first-child]:scroll-m-512"
     >
       <ServicesSection
         title={servicesPage.title}
@@ -169,4 +169,24 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     (section as HTMLDivElement).style.marginBottom = `${sectionMargin}px`;
     observer.observe(section);
   });
+
+  document.querySelectorAll("#sidebar a").forEach((anchor) => {
+    anchor.addEventListener("click", (e) => {
+      e.preventDefault();
+      const { target } = e;
+      const section = (target as HTMLAnchorElement).href.split("#")[1];
+      scrolling = true;
+      // @ts-ignore
+      document.querySelector(`#${section}`)!.scrollIntoViewPromise({
+        behavior: "smooth",
+      });
+      scrolling = false;
+    });
+  });
 </script>
+
+<style>
+  #content > div:first-child {
+    @apply scroll-m-512;
+  }
+</style>

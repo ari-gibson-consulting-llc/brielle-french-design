@@ -45,10 +45,15 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
     <div
       id="sidebar"
-      class="bg-#3DBFAF h-100vh sticky top-0 hidden w-full flex-col-reverse lg:col-start-1 lg:col-end-8 lg:row-start-1 lg:flex"
+      class="bg-#3DBFAF h-100vh sticky top-0 hidden w-full flex-col lg:col-start-1 lg:col-end-8 lg:row-start-1 lg:flex"
     >
-      <div class="pt-48"></div>
-      <!-- <h2 class="fixed">Some text</h2> -->
+      <div class="pt-42"></div>
+      <a
+        href={`#${servicesPage.dropdownSlug}`}
+        class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white scroll-m-512 xl:pl-24"
+      >
+        {servicesPage.title}
+      </a>
       {
         servicesPage.sections.map((service) => {
           const { slug, nameOfService } = service;

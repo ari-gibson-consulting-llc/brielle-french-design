@@ -50,7 +50,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
       <div class="pt-42"></div>
       <a
         href={`#${servicesPage.dropdownSlug}`}
-        class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white xl:pl-24"
+        class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white/50 xl:pl-24"
       >
         {servicesPage.title}
       </a>
@@ -60,7 +60,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
           return (
             <a
               href={`#${slug}`}
-              class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white xl:pl-24"
+              class="font-base py-4 pl-6 text-2xl font-bold lowercase text-white/50 xl:pl-24"
             >
               {nameOfService}
             </a>
@@ -124,11 +124,18 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   };
 
   let scrolling = false;
+  let selectedElement: HTMLAnchorElement | null = null;
 
   const sectionSelector = document.querySelector(
     "#pageSection"
   ) as HTMLSelectElement;
+  const selectContainer = document.querySelector(
+    "#select-container"
+  ) as HTMLDivElement;
 
+  const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
+
+  // sets smooth scrolling to each section when select value changes
   sectionSelector.addEventListener("change", async (e) => {
     const { target } = e;
     const section = (target as HTMLSelectElement).value;
@@ -140,11 +147,21 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     scrolling = false;
   });
 
-  const observer = new IntersectionObserver(
-    (entries, observer) => {
+  // detects which section is currently being displayed
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting && !scrolling) {
           sectionSelector.value = entry.target.id;
+          const sidebarAnchor = document.querySelector(
+            `#sidebar > a[href="#${entry.target.id}"]`
+          ) as HTMLAnchorElement;
+          sidebarAnchor.classList.remove("text-white/50");
+          sidebarAnchor.classList.add("text-white");
+          selectedElement?.classList.remove("text-white");
+          selectedElement?.classList.add("text-white/50");
+
+          selectedElement = sidebarAnchor;
         }
       });
     },
@@ -154,12 +171,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     }
   );
 
-  const selectContainer = document.querySelector(
-    "#select-container"
-  ) as HTMLDivElement;
-
-  const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
-
+  // stylizes the sections to have a margin bottom that is the height of the screen minus the height of the section and navbar
   document.querySelectorAll("[data-service-section]").forEach((section) => {
     const sectionMargin =
       screen.height +
@@ -167,9 +179,10 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
       (section as HTMLDivElement).offsetHeight -
       4 * remSize;
     (section as HTMLDivElement).style.marginBottom = `${sectionMargin}px`;
-    observer.observe(section);
+    sectionObserver.observe(section);
   });
 
+  // changes anchor tags to use smooth scrolling
   document.querySelectorAll("#sidebar a").forEach((anchor) => {
     anchor.addEventListener("click", (e) => {
       e.preventDefault();

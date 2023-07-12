@@ -172,15 +172,27 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   );
 
   // stylizes the sections to have a margin bottom that is the height of the screen minus the height of the section and navbar
-  document.querySelectorAll("[data-service-section]").forEach((section) => {
-    const sectionMargin =
-      screen.height +
-      selectContainer.offsetHeight -
-      (section as HTMLDivElement).offsetHeight -
-      4 * remSize;
-    (section as HTMLDivElement).style.marginBottom = `${sectionMargin}px`;
-    sectionObserver.observe(section);
-  });
+  document
+    .querySelectorAll("[data-service-section]")
+    .forEach((section, i, arr) => {
+      const isLastElement = i === arr.length - 1;
+      // if last item, use smaller padding
+      const sectionMargin = isLastElement
+        ? 128
+        : screen.height +
+          selectContainer.offsetHeight -
+          (section as HTMLDivElement).offsetHeight -
+          4 * remSize;
+          
+      isLastElement
+        ? ((
+            section as HTMLDivElement
+          ).style.paddingBottom = `${sectionMargin}px`)
+        : ((
+            section as HTMLDivElement
+          ).style.marginBottom = `${sectionMargin}px`);
+      sectionObserver.observe(section);
+    });
 
   // changes anchor tags to use smooth scrolling
   document.querySelectorAll("#sidebar a").forEach((anchor) => {

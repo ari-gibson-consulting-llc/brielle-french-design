@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -55,6 +55,9 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
     version: 0.3.0(prettier-plugin-astro@0.10.0)(prettier@2.8.8)
+  typescript:
+    specifier: ^5.0.4
+    version: 5.1.6
   unocss:
     specifier: ^0.53.5
     version: 0.53.5(postcss@8.4.25)(vite@4.4.2)
@@ -407,20 +410,8 @@ packages:
       mime: 3.0.0
     dev: true
 
-<<<<<<< HEAD
-<<<<<<< HEAD
   /@cloudflare/workerd-darwin-64@1.20230628.0:
     resolution: {integrity: sha512-ndtsGCR3WKcNvq2eE2teQXcE+r7PwMh3jnyxPuc4/Fed4q3DQC++da4zNn8f+D+dLd7myifGeygbHic86vh4OA==}
-=======
-  /@cloudflare/pages-plugin-mailchannels@0.1.2:
-    resolution: {integrity: sha512-xPZNM4NEhFkxnx6JNqoWzk3zgvyoPTFb5KbBz5Z1bc4X/D3gidR776WyUVQzR5OphzTqZfFiC9B8mYUyG0WEVg==}
-    dev: true
-
-=======
->>>>>>> aa668a8 (remove unneeded package)
-  /@cloudflare/workerd-darwin-64@1.20230518.0:
-    resolution: {integrity: sha512-reApIf2/do6GjLlajU6LbRYh8gm/XcaRtzGbF8jo5IzyDSsdStmfNuvq7qssZXG92219Yp1kuTgR9+D1GGZGbg==}
->>>>>>> 39260f2 (rebuild lockfile)
     engines: {node: '>=16'}
     cpu: [x64]
     os: [darwin]
@@ -464,16 +455,14 @@ packages:
     dev: true
     optional: true
 
-<<<<<<< HEAD
+  /@cloudflare/workers-types@4.20230518.0:
+    resolution: {integrity: sha512-A0w1V+5SUawGaaPRlhFhSC/SCDT9oQG8TMoWOKFLA4qbqagELqEAFD4KySBIkeVOvCBLT1DZSYBMCxbXddl0kw==}
+    dev: true
+
   /@contentful/rich-text-types@16.2.0:
     resolution: {integrity: sha512-4BHC+mfa50JB70epzpnas4EkiuB3mGdBZ5Rp8w7R5wXvswEf8TLg5yGau2FxmZeEjrAkDrt4vzBLVQ8v3Y//Jw==}
     engines: {node: '>=6.0.0'}
     dev: false
-=======
-  /@cloudflare/workers-types@4.20230518.0:
-    resolution: {integrity: sha512-A0w1V+5SUawGaaPRlhFhSC/SCDT9oQG8TMoWOKFLA4qbqagELqEAFD4KySBIkeVOvCBLT1DZSYBMCxbXddl0kw==}
-    dev: true
->>>>>>> 39260f2 (rebuild lockfile)
 
   /@emmetio/abbreviation@2.3.3:
     resolution: {integrity: sha512-mgv58UrU3rh4YgbE/TzgLQwJ3pFsHHhCLqY20aJq+9comytTXUDNGG/SMtSeMJdkpxgXSXunBGLD8Boka3JyVA==}

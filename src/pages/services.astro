@@ -23,9 +23,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 ---
 
 <Base>
-  <main
-    class="base-main bg-#F2F2F2 lg:grid lg:grid-cols-20"
-  >
+  <main class="base-main bg-#F2F2F2 lg:grid-cols-20 lg:grid">
     <div
       id="select-container"
       class="sticky top-0 mx-auto mb-8 w-3/4 lg:hidden"
@@ -71,7 +69,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 
     <article
       id="content"
-      class="lg:col-end-20 mx-8 sm:mx-12 md:mx-20 lg:col-start-8 lg:row-start-1 lg:[&>*:first-child]:scroll-m-512 lg:[&>*:first-child]:pt-16"
+      class="lg:col-end-20 lg:[&>*:first-child]:scroll-m-512 mx-8 sm:mx-12 md:mx-20 lg:col-start-8 lg:row-start-1 lg:[&>*:first-child]:pt-16"
     >
       <ServicesSection
         title={servicesPage.title}
@@ -151,9 +149,9 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(entry)
+        console.log(entry);
         if (entry.isIntersecting && !scrolling) {
-          console.log(entry)
+          console.log(entry);
           sectionSelector.value = entry.target.id;
           const sidebarAnchor = document.querySelector(
             `#sidebar > a[href="#${entry.target.id}"]`

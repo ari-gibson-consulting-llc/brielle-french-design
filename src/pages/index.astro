@@ -5,10 +5,7 @@ import Base from "../layouts/Base.astro";
 ---
 
 <Base>
-  <main
-    class="relative z-10 mb-48 block min-h-[calc(100vh-12rem)] bg-white sm:mb-36"
-    data-slotMachineTextList={homePage.rotatingText}
-  >
+  <main class="base-main" data-slotMachineTextList={homePage.rotatingText}>
     <div class="grid h-full justify-center px-10 md:grid-cols-10">
       <div
         class="md:col-end--1 z-[-100] flex h-full items-center justify-center md:col-start-4 md:row-start-1 lg:ml-[-200px] lg:w-auto"

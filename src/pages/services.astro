@@ -127,11 +127,6 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   const sectionSelector = document.querySelector(
     "#pageSection"
   ) as HTMLSelectElement;
-  const selectContainer = document.querySelector(
-    "#select-container"
-  ) as HTMLDivElement;
-
-  const remSize = parseInt(getComputedStyle(document.documentElement).fontSize);
 
   // sets smooth scrolling to each section when select value changes
   sectionSelector.addEventListener("change", async (e) => {
@@ -172,7 +167,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   // observe each section on page
   document
     .querySelectorAll("[data-service-section]")
-    .forEach((section, i, arr) => {
+    .forEach((section) => {
       sectionObserver.observe(section);
     });
 

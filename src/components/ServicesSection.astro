@@ -1,0 +1,21 @@
+---
+interface Props {
+  title: string;
+  slug?: string;
+  description: string;
+}
+
+const { title, slug, description } = Astro.props;
+---
+
+<div
+  id={slug}
+  data-service-section
+  class:list={[
+    "font-base scroll-m-16",
+    slug === "everything-else" ? "pb-48 lg:pb-64" : "mb-48 lg:mb-64",
+  ]}
+>
+  <h2 class="pb-4 text-xl font-bold sm:text-2xl lg:text-4xl">{title}</h2>
+  <p set:html={description} class="[&~ul]:list-disc [&~ul]:pl-4" />
+</div>

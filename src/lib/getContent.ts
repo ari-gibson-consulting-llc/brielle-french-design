@@ -19,6 +19,18 @@ interface ContentfulHome {
 }
 
 interface ContentfulServices {
+  contentTypeId: "servicesPage";
+  fields: {
+    title: contentful.EntryFieldTypes.Symbol;
+    dropdownSlug: contentful.EntryFieldTypes.Symbol;
+    primaryText: contentful.EntryFieldTypes.Text;
+    sections: contentful.EntryFieldTypes.Array<
+      contentful.EntryFieldTypes.EntryLink<ContentfulServicesSection>
+    >;
+  };
+}
+
+interface ContentfulServicesSection {
   contentTypeId: "services";
   fields: {
     nameOfService: contentful.EntryFieldTypes.Symbol;
@@ -61,8 +73,26 @@ export const homePage = (
   await contentfulClient.getEntry<ContentfulHome>("dWhvw9XdtMQizE6qhrAU0")
 ).fields;
 
-// export const services = (
-//   await contentfulClient.getEntries<ContentfulServices>({
-//     content_type: "services",
-//   })
-// ).items.map((item) => item.fields);
+const servicesPageFields = (
+  await contentfulClient.withoutUnresolvableLinks.getEntry<ContentfulServices>(
+    "fvuXQwQG1cwAfpepI4Q0Y"
+  )
+).fields;
+
+export const servicesPage = {
+  title: servicesPageFields.title,
+  dropdownSlug: servicesPageFields.dropdownSlug,
+  primaryText: snarkdown(servicesPageFields.primaryText).replace(
+    /<br \/>/g,
+    "<br /><br />"
+  ),
+  sections: servicesPageFields.sections.map((section) => {
+    if (!section) return;
+    return {
+      ...section.fields,
+      descriptionOfService: snarkdown(
+        section.fields.descriptionOfService
+      ).replace(/<br \/>/g, "<br /><br />"),
+    };
+  }),
+};

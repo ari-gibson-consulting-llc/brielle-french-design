@@ -165,7 +165,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     },
     {
       rootMargin: "0px",
-      threshold: 1,
+      threshold: document.documentElement.clientWidth >= 1024 ? 1 : 0.8,
     }
   );
 

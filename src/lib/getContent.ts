@@ -39,6 +39,19 @@ interface ContentfulServicesSection {
   };
 }
 
+interface ContentfulPortfolioPage {
+  contentTypeId: "portfolioPage";
+  fields: {
+    portfolioEntries: contentful.EntryFieldTypes.Array<
+      contentful.EntryFieldTypes.EntryLink<
+        | ContentfulPortfolioEntryStaticImages
+        | ContentfulPortfolioEntryCarousels
+        | ContentfulPortfolioEntryStaticImagesCarousels
+      >
+    >;
+  };
+}
+
 export interface ContentfulPortfolioEntryStaticImages {
   contentTypeId: "portfolioEntryStaticImages";
   fields: {
@@ -170,6 +183,12 @@ export const servicesPage = {
     };
   }),
 };
+
+export const portfolioPage = (
+  await contentfulClient.getEntry<ContentfulPortfolioPage>(
+    "7gxjMKCsYhtBf71Ab9bwx9"
+  )
+).fields;
 
 export const portfolioEntries = await (async () => {
   const entryCollections = await Promise.all([

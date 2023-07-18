@@ -165,11 +165,9 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   );
 
   // observe each section on page
-  document
-    .querySelectorAll("[data-service-section]")
-    .forEach((section) => {
-      sectionObserver.observe(section);
-    });
+  document.querySelectorAll("[data-service-section]").forEach((section) => {
+    sectionObserver.observe(section);
+  });
 
   // changes anchor tags to use smooth scrolling
   document.querySelectorAll("#sidebar a").forEach((anchor) => {

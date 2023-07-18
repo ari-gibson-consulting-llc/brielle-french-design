@@ -45,6 +45,7 @@ export interface ContentfulPortfolioEntryStaticImages {
     title: contentful.EntryFieldTypes.Symbol;
     slug: contentful.EntryFieldTypes.Symbol;
     description: contentful.EntryFieldTypes.Text;
+    portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
     images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
   };
 }
@@ -55,6 +56,7 @@ export interface ContentfulPortfolioEntryCarousels {
     title: contentful.EntryFieldTypes.Symbol;
     slug: contentful.EntryFieldTypes.Symbol;
     description: contentful.EntryFieldTypes.Text;
+    portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
     firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     thirdCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
@@ -67,6 +69,7 @@ export interface ContentfulPortfolioEntryStaticImagesCarousels {
     title: contentful.EntryFieldTypes.Symbol;
     slug: contentful.EntryFieldTypes.Symbol;
     description: contentful.EntryFieldTypes.Text;
+    portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
     images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
@@ -85,6 +88,7 @@ interface BasePortfolioEntry {
   props: {
     title: string;
     description: string;
+    portfolioPageDisplayImage: contentful.Asset<undefined, string>;
   };
 }
 
@@ -95,9 +99,9 @@ type Prettify<T> = {
 type PortfolioEntryStaticImages = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryStaticImages";
-    images: ContentfulAssetArr
+    images: ContentfulAssetArr;
   };
-}
+};
 
 type PortfolioEntryCarousels = BasePortfolioEntry & {
   props: {
@@ -106,7 +110,7 @@ type PortfolioEntryCarousels = BasePortfolioEntry & {
     secondCarousel?: ContentfulAssetArr;
     thirdCarousel?: ContentfulAssetArr;
   };
-}
+};
 
 type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
   props: {
@@ -115,8 +119,7 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
     firstCarousel: ContentfulAssetArr;
     secondCarousel?: ContentfulAssetArr;
   };
-}
-
+};
 
 let x: Prettify<PortfolioEntryStaticImages>;
 

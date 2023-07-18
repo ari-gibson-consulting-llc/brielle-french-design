@@ -149,9 +149,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   const sectionObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        console.log(entry);
         if (entry.isIntersecting && !scrolling) {
-          console.log(entry);
           sectionSelector.value = entry.target.id;
           const sidebarAnchor = document.querySelector(
             `#sidebar > a[href="#${entry.target.id}"]`

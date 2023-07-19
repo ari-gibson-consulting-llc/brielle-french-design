@@ -45,6 +45,7 @@ interface ContentfulPortfolioPage {
     portfolioEntries: contentful.EntryFieldTypes.Array<
       contentful.EntryFieldTypes.EntryLink<
         | ContentfulPortfolioEntryStaticImages
+        | ContentfulPortfolioEntryPDF
         | ContentfulPortfolioEntryCarousels
         | ContentfulPortfolioEntryStaticImagesCarousels
       >

@@ -1,0 +1,49 @@
+---
+import { portfolioEntries, PortfolioEntry } from "../../lib/getContent";
+import Base from "../../layouts/Base.astro";
+import Carousels from "../../components/portfolio/Carousels.astro";
+import PDF from "../../components/portfolio/PDF.astro";
+import StaticImages from "../../components/portfolio/StaticImages.astro";
+import StaticImagesCarousels from "../../components/portfolio/StaticImagesCarousels.astro";
+
+type Props = PortfolioEntry["props"];
+
+export async function getStaticPaths() {
+  return portfolioEntries;
+}
+
+const { title, description, type } = Astro.props;
+---
+
+<Base>
+  <main class="base-main grid grid-rows-2 px-10 lg:grid-cols-2 lg:grid-rows-1">
+    <div class="h-full w-full">
+      {
+        (() => {
+          switch (type) {
+            case "portfolioEntryStaticImages":
+              return <StaticImages />;
+            case "portfolioEntryPdf":
+              return <PDF />;
+            case "portfolioEntryCarousels":
+              return <Carousels />;
+            case "portfolioEntryStaticImagesCarousels":
+              return <StaticImagesCarousels />;
+          }
+        })()
+      }
+    </div>
+    <article
+      class="font-base row-start-1 mx-8 text-gray-700 lg:col-start-2 lg:my-8"
+    >
+      <h2
+        set:html={title}
+        class="color-[#FF7DB8] mt-auto pb-12 text-4xl font-bold lg:text-6xl"
+      />
+      <p
+        set:html={description}
+        class="text-md w-full leading-snug sm:text-lg"
+      />
+    </article>
+  </main>
+</Base>

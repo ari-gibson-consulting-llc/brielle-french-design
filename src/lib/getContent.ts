@@ -152,6 +152,12 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
   };
 };
 
+export type PortfolioEntry =
+  | PortfolioEntryStaticImages
+  | PortfolioEntryPDF
+  | PortfolioEntryCarousels
+  | PortfolioEntryStaticImagesCarousels;
+
 const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
   accessToken: import.meta.env.DEV
@@ -224,7 +230,7 @@ export const portfolioEntries = await (async () => {
 
   const entryFields = entryCollections
     .map((collection) => {
-      const type = collection.items[0].sys.contentType.sys.id;
+      const type = collection.items[0]?.sys.contentType.sys.id;
       return collection.items.map((entry) => ({
         params: {
           slug: entry.fields.slug,

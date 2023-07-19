@@ -16,13 +16,15 @@ const { title, description, type } = Astro.props;
 ---
 
 <Base>
-  <main class="base-main grid grid-rows-2 px-10 lg:grid-cols-2 lg:grid-rows-1">
-    <div class="h-full w-full">
+  <main
+    class="base-main flex-gap-8 flex flex-col-reverse px-4 md:px-10 lg:grid lg:grid-cols-2 lg:grid-rows-1"
+  >
+    <div>
       {
         (() => {
           switch (type) {
             case "portfolioEntryStaticImages":
-              return <StaticImages />;
+              return <StaticImages images={Astro.props.images} />;
             case "portfolioEntryPdf":
               return <PDF />;
             case "portfolioEntryCarousels":

@@ -22,7 +22,7 @@ const { title, description, type } = Astro.props;
         (() => {
           switch (type) {
             case "portfolioEntryStaticImages":
-              return <StaticImages />;
+              return <StaticImages images={Astro.props.images}/>;
             case "portfolioEntryPdf":
               return <PDF />;
             case "portfolioEntryCarousels":

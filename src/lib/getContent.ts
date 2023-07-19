@@ -52,7 +52,7 @@ interface ContentfulPortfolioPage {
   };
 }
 
-export interface ContentfulPortfolioEntryStaticImages {
+interface ContentfulPortfolioEntryStaticImages {
   contentTypeId: "portfolioEntryStaticImages";
   fields: {
     title: contentful.EntryFieldTypes.Symbol;
@@ -63,7 +63,7 @@ export interface ContentfulPortfolioEntryStaticImages {
   };
 }
 
-export interface ContentfulPortfolioEntryCarousels {
+interface ContentfulPortfolioEntryCarousels {
   contentTypeId: "portfolioEntryCarousels";
   fields: {
     title: contentful.EntryFieldTypes.Symbol;
@@ -77,7 +77,7 @@ export interface ContentfulPortfolioEntryCarousels {
   };
 }
 
-export interface ContentfulPortfolioEntryStaticImagesCarousels {
+interface ContentfulPortfolioEntryStaticImagesCarousels {
   contentTypeId: "portfolioEntryStaticImagesCarousels";
   fields: {
     title: contentful.EntryFieldTypes.Symbol;
@@ -100,15 +100,12 @@ interface BasePortfolioEntry {
     slug: string;
   };
   props: {
+    slug: string;
     title: string;
     description: string;
     portfolioPageDisplayImage: contentful.Asset<undefined, string>;
   };
 }
-
-type Prettify<T> = {
-  [K in keyof T]: T[K];
-} & {};
 
 type PortfolioEntryStaticImages = BasePortfolioEntry & {
   props: {
@@ -135,8 +132,6 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
     secondCarousel?: ContentfulAssetArr;
   };
 };
-
-let x: Prettify<PortfolioEntryStaticImages>;
 
 const contentfulClient = contentful.createClient({
   space: import.meta.env.CONTENTFUL_SPACE_ID,
@@ -205,8 +200,6 @@ export const portfolioEntries = await (async () => {
     }),
   ]);
 
-  entryCollections[0].items[0].fields;
-
   const entryFields = entryCollections
     .map((collection) => {
       const type = collection.items[0].sys.contentType.sys.id;
@@ -215,10 +208,8 @@ export const portfolioEntries = await (async () => {
           slug: entry.fields.slug,
         },
         props: {
-          // ...omit("slug", entry.fields),
           ...entry.fields,
           type,
-          title: entry.fields.title,
           description: snarkdown(entry.fields.description).replace(
             /<br \/>/g,
             "<br /><br />"
@@ -230,8 +221,3 @@ export const portfolioEntries = await (async () => {
 
   return entryFields;
 })();
-
-function omit<T extends object>(key: keyof T, obj: T) {
-  const { [key]: omitted, ...rest } = obj;
-  return rest;
-}

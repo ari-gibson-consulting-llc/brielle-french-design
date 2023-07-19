@@ -63,6 +63,17 @@ interface ContentfulPortfolioEntryStaticImages {
   };
 }
 
+interface ContentfulPortfolioEntryPDF {
+  contentTypeId: "portfolioEntryPdf";
+  fields: {
+    title: contentful.EntryFieldTypes.Symbol;
+    slug: contentful.EntryFieldTypes.Symbol;
+    description: contentful.EntryFieldTypes.Text;
+    portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
+    pdf: contentful.EntryFieldTypes.AssetLink;
+  };
+}
+
 interface ContentfulPortfolioEntryCarousels {
   contentTypeId: "portfolioEntryCarousels";
   fields: {
@@ -111,6 +122,13 @@ type PortfolioEntryStaticImages = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryStaticImages";
     images: ContentfulAssetArr;
+  };
+};
+
+type PortfolioEntryPDF = BasePortfolioEntry & {
+  props: {
+    type: "portfolioEntryPdf";
+    pdf: contentful.Asset<undefined, string>;
   };
 };
 
@@ -191,6 +209,9 @@ export const portfolioEntries = await (async () => {
   const entryCollections = await Promise.all([
     contentfulClient.getEntries<ContentfulPortfolioEntryStaticImages>({
       content_type: "portfolioEntryStaticImages",
+    }),
+    contentfulClient.getEntries<ContentfulPortfolioEntryPDF>({
+      content_type: "portfolioEntryPdf",
     }),
     contentfulClient.getEntries<ContentfulPortfolioEntryCarousels>({
       content_type: "portfolioEntryCarousels",

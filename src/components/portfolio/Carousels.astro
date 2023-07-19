@@ -5,10 +5,10 @@ import type { ContentfulPortfolioEntryCarousels } from "../../lib/getContent";
 
 type Props = Pick<
   ContentfulPortfolioEntryCarousels["fields"],
-  "firstCarousel" | "secondCarousel" | "thirdCarousel"
+  "firstCarousel" | "secondCarousel" | "thirdCarousel" | "fourthCarousel"
 >;
 
-const { firstCarousel, secondCarousel, thirdCarousel } = Astro.props;
+const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } = Astro.props;
 console.log(firstCarousel);
 ---
 

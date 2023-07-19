@@ -73,6 +73,7 @@ export interface ContentfulPortfolioEntryCarousels {
     firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     thirdCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    fourthCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
   };
 }
 
@@ -122,6 +123,7 @@ type PortfolioEntryCarousels = BasePortfolioEntry & {
     firstCarousel: ContentfulAssetArr;
     secondCarousel?: ContentfulAssetArr;
     thirdCarousel?: ContentfulAssetArr;
+    fourthCarousel?: ContentfulAssetArr;
   };
 };
 

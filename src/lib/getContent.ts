@@ -102,7 +102,10 @@ interface ContentfulPortfolioEntryStaticImagesCarousels {
   };
 }
 
-type ContentfulAssetArr = contentful.Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>[];
+type ContentfulAssetArr = contentful.Asset<
+  "WITHOUT_UNRESOLVABLE_LINKS",
+  string
+>[];
 
 interface BasePortfolioEntry {
   params: {
@@ -112,7 +115,10 @@ interface BasePortfolioEntry {
     slug: string;
     title: string;
     description: string;
-    portfolioPageDisplayImage: contentful.Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
+    portfolioPageDisplayImage: contentful.Asset<
+      "WITHOUT_UNRESOLVABLE_LINKS",
+      string
+    >;
   };
 }
 

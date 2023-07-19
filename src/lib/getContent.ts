@@ -102,10 +102,7 @@ interface ContentfulPortfolioEntryStaticImagesCarousels {
   };
 }
 
-type ContentfulAssetArr = (
-  | contentful.UnresolvedLink<"Asset">
-  | contentful.Asset<undefined, string>
-)[];
+type ContentfulAssetArr = contentful.Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>[];
 
 interface BasePortfolioEntry {
   params: {
@@ -115,11 +112,11 @@ interface BasePortfolioEntry {
     slug: string;
     title: string;
     description: string;
-    portfolioPageDisplayImage: contentful.Asset<undefined, string>;
+    portfolioPageDisplayImage: contentful.Asset<"WITHOUT_UNRESOLVABLE_LINKS", string>;
   };
 }
 
-type PortfolioEntryStaticImages = BasePortfolioEntry & {
+export type PortfolioEntryStaticImages = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryStaticImages";
     images: ContentfulAssetArr;
@@ -213,17 +210,18 @@ export const portfolioPage = (
 ).fields;
 
 export const portfolioEntries = await (async () => {
+  // prettier-ignore
   const entryCollections = await Promise.all([
-    contentfulClient.getEntries<ContentfulPortfolioEntryStaticImages>({
+    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImages>({
       content_type: "portfolioEntryStaticImages",
     }),
-    contentfulClient.getEntries<ContentfulPortfolioEntryPDF>({
+    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryPDF>({
       content_type: "portfolioEntryPdf",
     }),
-    contentfulClient.getEntries<ContentfulPortfolioEntryCarousels>({
+    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryCarousels>({
       content_type: "portfolioEntryCarousels",
     }),
-    contentfulClient.getEntries<ContentfulPortfolioEntryStaticImagesCarousels>({
+    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImagesCarousels>({
       content_type: "portfolioEntryStaticImagesCarousels",
     }),
   ]);

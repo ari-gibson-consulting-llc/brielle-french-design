@@ -26,7 +26,7 @@ const { title, description, type } = Astro.props;
             case "portfolioEntryStaticImages":
               return <StaticImages images={Astro.props.images} />;
             case "portfolioEntryPdf":
-              return <PDF />;
+              return <PDF pdf={Astro.props.pdf} />;
             case "portfolioEntryCarousels":
               return (
                 <Carousels

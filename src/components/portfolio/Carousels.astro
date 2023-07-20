@@ -1,0 +1,10 @@
+---
+import { Image } from "astro:assets";
+import type { PortfolioEntryCarousels } from "../../lib/getContent";
+type Props = Pick<
+  PortfolioEntryCarousels["props"],
+  "firstCarousel" | "secondCarousel" | "thirdCarousel" | "fourthCarousel"
+>;
+const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
+  Astro.props;
+---

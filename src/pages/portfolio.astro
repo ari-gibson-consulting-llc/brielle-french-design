@@ -16,7 +16,7 @@ import { portfolioEntries } from "../lib/getContent";
             <a class="absolute" href={`portfolio/${entry.props.slug}`}>
               <Image
                 class="m-0"
-                src={image.fields.file!.url}
+                src={image.fields.file!.url + "?fm=webp&q=90&w=300"}
                 alt={image.fields.title}
                 width={image.fields.file!.details.image!.width}
                 height={image.fields.file!.details.image!.height}

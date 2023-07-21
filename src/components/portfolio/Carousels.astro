@@ -41,11 +41,11 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
 
 <style>
   html {
-    --c1: hsl(212deg 22% 10%);
-    --c2: hsl(215deg 22% 15%);
-    --c3: hsl(215deg 22% 20%);
-    --c4: hsl(215deg 22% 40%);
-    --h: hsl(175deg 75% 55%);
+    --c1: #141414;
+    --c2: #1e1e1e;
+    --c3: #282828;
+    --c4: #505050;
+    --h: #f84fb7;
   }
 
   .blaze-slider.dragging .blaze-track {
@@ -76,7 +76,7 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
     cursor: pointer;
     background-position: center;
     background-size: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='%2337e2d5' d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24' viewBox='0 0 24 24' width='24'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath fill='%23f84fb7' d='M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z'/%3E%3C/svg%3E");
   }
 
   .blaze-next {
@@ -146,7 +146,7 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
           slidesToShow: 1,
           enableAutoplay: true,
           autoplayInterval: 4000,
-          stopAutoplayOnInteraction: true
+          stopAutoplayOnInteraction: true,
         },
         "(min-width: 768px)": {
           slidesToShow: 2,

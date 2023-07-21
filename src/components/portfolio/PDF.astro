@@ -4,14 +4,14 @@ type Props = Pick<PortfolioEntryPDF["props"], "pdf">;
 const { pdf } = Astro.props;
 ---
 
-<div class="flex flex-col h-full w-full pb-4 flex-gap-4">
+<div class="flex-gap-4 flex h-full w-full flex-col pb-4">
   <iframe
     class="flex-grow"
     src={pdf.fields.file!.url}
     width="100%"
     height="100%"></iframe>
   <a
-    class="rounded font-bold bg-#F84FB7 px-4 py-2 text-center text-white hover:bg-#f972c5"
+    class="bg-#F84FB7 hover:bg-#f972c5 rounded px-4 py-2 text-center font-bold text-white"
     href={"https:" + pdf.fields.file!.url}
     target="_blank"
     rel="noopener noreferrer">View Full PDF in New Tab</a

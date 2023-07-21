@@ -11,7 +11,7 @@ import { portfolioEntries } from "../lib/getContent";
         portfolioEntries.map((entry) => {
           const image = entry.props.portfolioPageDisplayImage;
           if (!image) return;
-          
+
           return (
             <a class="absolute" href={`portfolio/${entry.props.slug}`}>
               <Image

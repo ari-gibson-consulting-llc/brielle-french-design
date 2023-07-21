@@ -129,7 +129,7 @@ export type PortfolioEntryStaticImages = BasePortfolioEntry & {
   };
 };
 
-type PortfolioEntryPDF = BasePortfolioEntry & {
+export type PortfolioEntryPDF = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryPdf";
     pdf: contentful.Asset<undefined, string>;

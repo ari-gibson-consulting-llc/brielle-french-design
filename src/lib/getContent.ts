@@ -136,7 +136,7 @@ type PortfolioEntryPDF = BasePortfolioEntry & {
   };
 };
 
-type PortfolioEntryCarousels = BasePortfolioEntry & {
+export type PortfolioEntryCarousels = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryCarousels";
     firstCarousel: ContentfulAssetArr;

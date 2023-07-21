@@ -102,7 +102,7 @@ interface ContentfulPortfolioEntryStaticImagesCarousels {
   };
 }
 
-type ContentfulAssetArr = contentful.Asset<
+export type ContentfulAssetArr = contentful.Asset<
   "WITHOUT_UNRESOLVABLE_LINKS",
   string
 >[];

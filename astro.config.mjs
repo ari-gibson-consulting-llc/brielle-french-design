@@ -1,4 +1,4 @@
-import { defineConfig, sharpImageService } from "astro/config";
+import { defineConfig } from "astro/config";
 import UnoCSS from "unocss/astro";
 import alpinejs from "@astrojs/alpinejs";
 
@@ -10,10 +10,4 @@ export default defineConfig({
     }),
     alpinejs(),
   ],
-  experimental: {
-    assets: true,
-  },
-  image: {
-    service: sharpImageService(),
-  },
 });

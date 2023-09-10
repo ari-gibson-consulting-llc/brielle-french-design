@@ -125,7 +125,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
   let selectedElement: HTMLAnchorElement | null = null;
 
   const sectionSelector = document.querySelector(
-    "#pageSection"
+    "#pageSection",
   ) as HTMLSelectElement;
 
   // sets smooth scrolling to each section when select value changes
@@ -147,7 +147,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
         if (entry.isIntersecting && !scrolling) {
           sectionSelector.value = entry.target.id;
           const sidebarAnchor = document.querySelector(
-            `#sidebar > a[href="#${entry.target.id}"]`
+            `#sidebar > a[href="#${entry.target.id}"]`,
           ) as HTMLAnchorElement;
           sidebarAnchor.classList.remove("text-white/50");
           sidebarAnchor.classList.add("text-white");
@@ -161,7 +161,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     {
       rootMargin: "0px",
       threshold: document.documentElement.clientWidth >= 1024 ? 1 : 0.8,
-    }
+    },
   );
 
   // observe each section on page

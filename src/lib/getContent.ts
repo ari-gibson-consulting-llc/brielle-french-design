@@ -177,7 +177,7 @@ export const aboutPage = {
   title: aboutPageFields.title,
   bioText: snarkdown(aboutPageFields.bioText).replace(
     /<br \/>/g,
-    "<br /><br />"
+    "<br /><br />",
   ),
 };
 
@@ -187,7 +187,7 @@ export const homePage = (
 
 const servicesPageFields = (
   await contentfulClient.withoutUnresolvableLinks.getEntry<ContentfulServices>(
-    "fvuXQwQG1cwAfpepI4Q0Y"
+    "fvuXQwQG1cwAfpepI4Q0Y",
   )
 ).fields;
 
@@ -196,14 +196,14 @@ export const servicesPage = {
   dropdownSlug: servicesPageFields.dropdownSlug,
   primaryText: snarkdown(servicesPageFields.primaryText).replace(
     /<br \/>/g,
-    "<br /><br />"
+    "<br /><br />",
   ),
   sections: servicesPageFields.sections.map((section) => {
     if (!section) return;
     return {
       ...section.fields,
       descriptionOfService: snarkdown(
-        section.fields.descriptionOfService
+        section.fields.descriptionOfService,
       ).replace(/<br \/>/g, "<br /><br />"),
     };
   }),
@@ -211,7 +211,7 @@ export const servicesPage = {
 
 export const portfolioPage = (
   await contentfulClient.getEntry<ContentfulPortfolioPage>(
-    "7gxjMKCsYhtBf71Ab9bwx9"
+    "7gxjMKCsYhtBf71Ab9bwx9",
   )
 ).fields;
 
@@ -244,7 +244,7 @@ export const portfolioEntries = await (async () => {
           type,
           description: snarkdown(entry.fields.description).replace(
             /<br \/>/g,
-            "<br /><br />"
+            "<br /><br />",
           ),
         },
       }));

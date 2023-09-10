@@ -35,7 +35,7 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
             <button class="blaze-next">next</button>
           </div>
         </div>
-      )
+      ),
   )
 }
 
@@ -58,8 +58,15 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
     font-size: 30px;
     justify-content: center;
     align-items: center;
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, Cantarell,
-      "Noto Sans", sans-serif;
+    font-family:
+      system-ui,
+      -apple-system,
+      "Segoe UI",
+      Roboto,
+      Ubuntu,
+      Cantarell,
+      "Noto Sans",
+      sans-serif;
     background: var(--c2);
     color: white;
     border: 2px solid var(--c4);
@@ -122,7 +129,9 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
     border: none;
     background: var(--h);
     cursor: pointer;
-    transition: transform 200ms ease, background-color 300ms ease;
+    transition:
+      transform 200ms ease,
+      background-color 300ms ease;
     @apply h-3 w-3 md:h-4 md:w-4;
   }
 
@@ -136,7 +145,7 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
   import BlazeSlider from "blaze-slider";
   import "blaze-slider/dist/blaze.css";
   const sliders = document.querySelectorAll(
-    ".blaze-slider"
+    ".blaze-slider",
   ) as unknown as Array<HTMLElement>;
   sliders.forEach(
     (slider) =>
@@ -154,6 +163,6 @@ const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
         "(min-width: 1024px)": {
           slidesToShow: 3,
         },
-      })
+      }),
   );
 </script>

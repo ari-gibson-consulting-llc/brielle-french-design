@@ -60,7 +60,7 @@ export class SlotMachineEffect {
         clearInterval(int);
       }
     };
-    const wordIndex = this.indexToRotateTo(this.wordList.length);
+    const wordIndex = this.indexToRotateTo();
     let top = -wordIndex * 300;
     const int = setInterval(frame, 4, top);
 
@@ -70,7 +70,7 @@ export class SlotMachineEffect {
     }, 300);
   }
 
-  private indexToRotateTo(wordListLength: number): number {
+  private indexToRotateTo(): number {
     return Math.floor(Math.random() * (this.max - this.min + 1) + this.min);
   }
 

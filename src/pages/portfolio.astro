@@ -5,7 +5,7 @@ import { portfolioEntries } from "../lib/getContent";
 ---
 
 <Base>
-  <main class="base-main">
+  <main class="base-main px-8 lg:px=0">
     <div class="portfolio-entries relative mb-4">
       {
         portfolioEntries.map((entry) => {
@@ -15,8 +15,8 @@ import { portfolioEntries } from "../lib/getContent";
           return (
             <a class="absolute" href={`portfolio/${entry.props.slug}`}>
               <Image
-                class="m-0"
-                src={image.fields.file!.url + "?fm=webp&q=90&w=300"}
+                class="m-0 my-8 lg:my-0"
+                src={image.fields.file!.url + "?fm=webp&q=90&w=800"}
                 alt={image.fields.title as string | null}
                 width={image.fields.file!.details.image!.width}
                 height={image.fields.file!.details.image!.height}
@@ -27,7 +27,7 @@ import { portfolioEntries } from "../lib/getContent";
       }
     </div>
     <!-- add padding after last item -->
-    <div class="h-8"></div>
+    <div class="h-24"></div>
   </main>
 </Base>
 
@@ -35,5 +35,7 @@ import { portfolioEntries } from "../lib/getContent";
   import MiniMasonry from "minimasonry";
   new MiniMasonry({
     container: ".portfolio-entries",
+    gutter: 120,
+    baseWidth: 350,
   });
 </script>

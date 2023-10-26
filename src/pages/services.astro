@@ -23,14 +23,14 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
 ---
 
 <Base>
-  <main class="base-main bg-#F2F2F2 lg:grid-cols-20 lg:grid">
+  <main class="base-main lg:bg-#F2F2F2 lg:grid-cols-20 lg:grid">
     <div
       id="select-container"
       class="sticky top-0 mx-auto mb-8 w-3/4 lg:hidden"
     >
       <select
         id="pageSection"
-        class="border-r-24 font-base mt-1.5 h-10 w-full rounded-md border-gray-300 border-r-transparent bg-gray-100 px-4 font-bold text-gray-700 sm:text-sm"
+        class="border-r-24 font-base mt-1.5 h-10 w-full rounded-md border-gray-300 border-r-transparent bg-#2FA496 text-white px-4 font-bold text-gray-700 sm:text-sm"
       >
         <option value={servicesPage.dropdownSlug}>{servicesPage.title}</option>
         {
@@ -137,6 +137,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
     await document.querySelector(`#${section}`)!.scrollIntoViewPromise({
       behavior: "smooth",
     });
+    await new Promise((resolve) => setTimeout(resolve, 200));
     scrolling = false;
   });
 

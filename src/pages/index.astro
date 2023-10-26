@@ -9,17 +9,17 @@ import Base from "../layouts/Base.astro";
     data-slotMachineTextList={homePage.rotatingText}
   >
     <div
-      class="lg:-ml-200px md:col-end--1 absolute left-0 top-0 -z-10 flex h-full w-full flex-col-reverse md:static md:col-start-4 md:row-start-1 md:w-auto md:items-center md:justify-end"
+      class="lg:-ml-200px md:col-end--1 absolute left-0 -top-16 -z-10 flex h-full w-full flex-col-reverse md:static md:col-start-4 md:row-start-1 md:w-auto md:items-center md:justify-end"
     >
       <img
         src="/home-page-logo.svg"
         alt=""
-        class="-left-25vw md:max-w-200 w-2/1 relative -bottom-64 md:static md:w-full"
+        class="-left-25vw md:max-w-200 w-2/1 relative -bottom-64 md:static md:w-full rotate-180 md:rotate-0"
         onload="SVGInject(this)"
       />
     </div>
     <div
-      class="font-base leading-16 lg:leading-30 mt-16 justify-self-center text-left text-5xl font-bold sm:text-6xl md:col-start-1 md:col-end-6 md:row-start-1 md:flex md:w-full md:flex-col md:items-end md:text-right md:text-7xl lg:text-8xl [@media(min-width:600px)]:w-4/5"
+      class="font-base leading-12 lg:leading-30 mt-16 text-left text-4xl font-bold sm:text-5xl md:col-start-1 md:col-end-6 md:row-start-1 md:flex md:w-full md:flex-col md:items-end md:text-right md:text-6xl lg:text-8xl [@media(min-width:600px)]:w-4/5"
     >
       <div class="block md:mt-24" set:html={homePage.stillText} />
       <div class="flex items-end md:w-full">

@@ -52,7 +52,7 @@ function validateContactFormInput(input: ContactForm) {
   const missingFields = requiredFields.filter((field) => !input[field]);
   const invalidFields = requiredFields.filter(
     (field) =>
-      !missingFields.includes(field) && typeof input[field] !== "string"
+      !missingFields.includes(field) && typeof input[field] !== "string",
   );
 
   const errors: string[] = [];
@@ -86,7 +86,7 @@ async function validateTurnstile(input: ValidateTurnstileParams) {
         secret,
         response: turnstileResponse,
       }),
-    }
+    },
   );
 
   if (!request.ok) {
@@ -100,7 +100,7 @@ async function validateTurnstile(input: ValidateTurnstileParams) {
   if (!response.success) {
     return new Response(
       `Error validating Turnstile token: ${response["error-codes"].join(",")}`,
-      { status: 400 }
+      { status: 400 },
     );
   }
 

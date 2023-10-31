@@ -18,9 +18,9 @@ const { title, description, type } = Astro.props;
 
 <Base>
   <main
-    class="base-main flex-gap-8 flex flex-col-reverse px-4 md:px-10 lg:grid lg:grid-cols-2 lg:grid-rows-1"
+    class="base-main flex-gap-8 flex flex-col-reverse px-4 md:px-10 lg:grid lg:grid-cols-3 lg:grid-rows-1"
   >
-    <div>
+    <div class="lg:col-span-2">
       {
         (() => {
           switch (type) {
@@ -44,7 +44,7 @@ const { title, description, type } = Astro.props;
       }
     </div>
     <article
-      class="font-base row-start-1 mx-8 text-gray-700 lg:col-start-2 lg:my-8"
+      class="font-base row-start-1 mx-8 text-gray-700 lg:col-start-3 lg:my-8"
     >
       <h2
         set:html={title}

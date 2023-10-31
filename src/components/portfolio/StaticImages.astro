@@ -8,8 +8,8 @@ const { images } = Astro.props;
 {
   images.map((image) => (
     <Image
-      class="pb-4"
-      src={image.fields.file!.url + "?fm=webp&q=90&w=800"}
+      class="pb-4 px-28"
+      src={image.fields.file!.url + "?fm=webp&q=75"}
       alt={image.fields.title as string | null}
       width={image.fields.file!.details.image!.width}
       height={image.fields.file!.details.image!.height}

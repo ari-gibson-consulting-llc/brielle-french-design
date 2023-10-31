@@ -7,14 +7,14 @@ type Props = {
 const { images } = Astro.props;
 ---
 
-<div class="blaze-slider pb-24">
+<div class="blaze-slider pb-24 px-28">
   <div class="blaze-container">
     <div class="blaze-track-container">
       <div class="blaze-track">
         {
           images.map((slide) => (
             <Image
-              src={slide.fields.file!.url + "?fm=webp&q=90&w=800"}
+              src={slide.fields.file!.url + "?fm=webp&q=75"}
               alt={slide.fields.description as string | null}
               width={slide.fields.file!.details.image!.width}
               height={slide.fields.file!.details.image!.height}

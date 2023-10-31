@@ -222,32 +222,20 @@ export const servicesPage = {
 };
 
 export const portfolioPage = (
-  await contentfulClient.getEntry<ContentfulPortfolioPage>(
+  await contentfulClient.withoutUnresolvableLinks.getEntry<ContentfulPortfolioPage>(
     "7gxjMKCsYhtBf71Ab9bwx9",
   )
 ).fields;
 
 export const portfolioEntries = await (async () => {
-  // prettier-ignore
-  const entryCollections = await Promise.all([
-    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImages>({
-      content_type: "portfolioEntryStaticImages",
-    }),
-    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryPDF>({
-      content_type: "portfolioEntryPdf",
-    }),
-    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryCarousels>({
-      content_type: "portfolioEntryCarousels",
-    }),
-    contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImagesCarousels>({
-      content_type: "portfolioEntryStaticImagesCarousels",
-    }),
-  ]);
-
-  const entryFields = entryCollections
-    .map((collection) => {
-      const type = collection.items[0]?.sys.contentType.sys.id;
-      return collection.items.map((entry) => ({
+  const entryFields = portfolioPage.portfolioEntries
+    .map((entry) => {
+      if (!entry) {
+        console.log("entry is undefined");
+        return;
+      }
+      const type = entry.sys.contentType.sys.id;
+      return {
         params: {
           slug: entry.fields.slug,
         },
@@ -259,9 +247,48 @@ export const portfolioEntries = await (async () => {
             "<br /><br />",
           ),
         },
-      }));
+      };
     })
-    .flat();
+    .filter((entry): entry is PortfolioEntry => !!entry);
 
   return entryFields;
 })();
+
+// export const portfolioEntries = await (async () => {
+//   // prettier-ignore
+//   const entryCollections = await Promise.all([
+//     contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImages>({
+//       content_type: "portfolioEntryStaticImages",
+//     }),
+//     contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryPDF>({
+//       content_type: "portfolioEntryPdf",
+//     }),
+//     contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryCarousels>({
+//       content_type: "portfolioEntryCarousels",
+//     }),
+//     contentfulClient.withoutUnresolvableLinks.getEntries<ContentfulPortfolioEntryStaticImagesCarousels>({
+//       content_type: "portfolioEntryStaticImagesCarousels",
+//     }),
+//   ]);
+
+//   const entryFields = entryCollections
+//     .map((collection) => {
+//       const type = collection.items[0]?.sys.contentType.sys.id;
+//       return collection.items.map((entry) => ({
+//         params: {
+//           slug: entry.fields.slug,
+//         },
+//         props: {
+//           ...entry.fields,
+//           type,
+//           description: snarkdown(entry.fields.description).replace(
+//             /<br \/>/g,
+//             "<br /><br />",
+//           ),
+//         },
+//       }));
+//     })
+//     .flat();
+
+//   return entryFields;
+// })();

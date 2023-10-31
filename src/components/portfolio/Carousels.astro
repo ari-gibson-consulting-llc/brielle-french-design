@@ -4,13 +4,21 @@ import Carousel from "../Carousel.astro";
 type Props = Pick<
   PortfolioEntryCarousels["props"],
   "firstCarousel" | "secondCarousel" | "thirdCarousel" | "fourthCarousel"
->;
-const { firstCarousel, secondCarousel, thirdCarousel, fourthCarousel } =
-  Astro.props;
+> & {
+  slidesToShow: Array<number | undefined>;
+};
+const {
+  firstCarousel,
+  secondCarousel,
+  thirdCarousel,
+  fourthCarousel,
+  slidesToShow,
+} = Astro.props;
 ---
 
 {
   [firstCarousel, secondCarousel, thirdCarousel, fourthCarousel].map(
-    (carousel) => carousel && <Carousel images={carousel} />,
+    (carousel, i) =>
+      carousel && <Carousel images={carousel} slidesToShow={slidesToShow[i]} />,
   )
 }

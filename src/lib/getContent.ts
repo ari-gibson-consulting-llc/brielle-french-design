@@ -83,9 +83,13 @@ interface ContentfulPortfolioEntryCarousels {
     description: contentful.EntryFieldTypes.Text;
     portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
     firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    firstCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
     secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    secondCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
     thirdCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    thirdCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
     fourthCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    fourthCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
   };
 }
 
@@ -98,7 +102,9 @@ interface ContentfulPortfolioEntryStaticImagesCarousels {
     portfolioPageDisplayImage: contentful.EntryFieldTypes.AssetLink;
     images: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
     firstCarousel: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    firstCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
     secondCarousel?: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.AssetLink>;
+    secondCarouselMaxNumberOfSlidesToShow?: contentful.EntryFieldTypes.Integer;
   };
 }
 
@@ -140,9 +146,13 @@ export type PortfolioEntryCarousels = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryCarousels";
     firstCarousel: ContentfulAssetArr;
+    firstCarouselMaxNumberOfSlidesToShow?: number;
     secondCarousel?: ContentfulAssetArr;
+    secondCarouselMaxNumberOfSlidesToShow?: number;
     thirdCarousel?: ContentfulAssetArr;
+    thirdCarouselMaxNumberOfSlidesToShow?: number;
     fourthCarousel?: ContentfulAssetArr;
+    fourthCarouselMaxNumberOfSlidesToShow?: number;
   };
 };
 
@@ -151,7 +161,9 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
     type: "portfolioEntryStaticImagesCarousels";
     images: ContentfulAssetArr;
     firstCarousel: ContentfulAssetArr;
+    firstCarouselMaxNumberOfSlidesToShow?: number;
     secondCarousel?: ContentfulAssetArr;
+    secondCarouselMaxNumberOfSlidesToShow?: number;
   };
 };
 

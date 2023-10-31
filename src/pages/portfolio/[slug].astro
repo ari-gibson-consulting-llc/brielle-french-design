@@ -35,6 +35,12 @@ const { title, description, type } = Astro.props;
                   secondCarousel={Astro.props.secondCarousel}
                   thirdCarousel={Astro.props.thirdCarousel}
                   fourthCarousel={Astro.props.fourthCarousel}
+                  slidesToShow={[
+                    Astro.props.firstCarouselMaxNumberOfSlidesToShow,
+                    Astro.props.secondCarouselMaxNumberOfSlidesToShow,
+                    Astro.props.thirdCarouselMaxNumberOfSlidesToShow,
+                    Astro.props.fourthCarouselMaxNumberOfSlidesToShow,
+                  ]}
                 />
               );
             case "portfolioEntryStaticImagesCarousels":

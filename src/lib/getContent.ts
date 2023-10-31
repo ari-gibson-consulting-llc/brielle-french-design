@@ -146,9 +146,13 @@ export type PortfolioEntryCarousels = BasePortfolioEntry & {
   props: {
     type: "portfolioEntryCarousels";
     firstCarousel: ContentfulAssetArr;
+    firstCarouselMaxNumberOfSlidesToShow?: number;
     secondCarousel?: ContentfulAssetArr;
+    secondCarouselMaxNumberOfSlidesToShow?: number;
     thirdCarousel?: ContentfulAssetArr;
+    thirdCarouselMaxNumberOfSlidesToShow?: number;
     fourthCarousel?: ContentfulAssetArr;
+    fourthCarouselMaxNumberOfSlidesToShow?: number;
   };
 };
 
@@ -157,7 +161,9 @@ type PortfolioEntryStaticImagesCarousels = BasePortfolioEntry & {
     type: "portfolioEntryStaticImagesCarousels";
     images: ContentfulAssetArr;
     firstCarousel: ContentfulAssetArr;
+    firstCarouselMaxNumberOfSlidesToShow?: number;
     secondCarousel?: ContentfulAssetArr;
+    secondCarouselMaxNumberOfSlidesToShow?: number;
   };
 };
 

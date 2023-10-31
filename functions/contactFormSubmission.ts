@@ -44,6 +44,8 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // if errors in validation, return response from validateTurnstile
   if (!turnstileValidated) return turnstileValidated;
 
+  console.log(context.env.BREVO_API_KEY);
+
   return sendEmail({ name, email, message, apiKey: context.env.BREVO_API_KEY });
 };
 
@@ -111,6 +113,12 @@ async function validateTurnstile(input: ValidateTurnstileParams) {
 async function sendEmail(input: SendEmailParams) {
   const { name, email, message, apiKey } = input;
 
+  console.log(`Contact form request`, {
+    name,
+    email,
+    message,
+  });
+
   const request = await fetch("https://api.brevo.com/v3/smtp/email", {
     method: "POST",
     headers: {
@@ -125,11 +133,23 @@ async function sendEmail(input: SendEmailParams) {
       },
       to: [
         {
-          email: "Brielle French",
-          name: "hi@briellefrenchdesign.com",
+          email,
+          name,
         },
       ],
-      templateId: "adfasdf",
+      bcc: [
+        {
+          email: "arimgibson@gmail.com",
+          name: "Brielle French",
+        },
+      ],
+      htmlContent: `
+Your contact form submission has been received! I'll be in touch shortly.
+
+Name: ${name} as string
+Email: ${email} as string
+Message: ${message} as string`,
+      subject: "Contact Form Submitted on Brielle French Design",
     }),
   });
 
@@ -137,5 +157,12 @@ async function sendEmail(input: SendEmailParams) {
     return new Response("Email sent successfully", { status: 200 });
   }
 
+  console.log(`Error sending email`, {
+    status: request.status,
+    body: await request.text(),
+    name,
+    email,
+    message,
+  });
   return new Response("Error sending email", { status: 500 });
 }

@@ -29,7 +29,9 @@ export async function submitForm(form: ContactFormSubmission) {
     body: JSON.stringify(form),
   });
 
-  if (!response.ok) {
-    throw new Error("Something went wrong");
+  if (response.status === 200) {
+    return "success";
   }
+
+  return "error";
 }

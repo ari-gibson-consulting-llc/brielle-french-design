@@ -47,7 +47,14 @@ import Base from "../layouts/Base.astro";
                 >
                 </div>
 
-                <span id="contact-form-errors" class="hidden pt-6 text-red-600"
+                <span
+                  id="contact-form-errors"
+                  class="hidden mt-6 pl-4 p-2 text-red-700 bg-red-200 rounded-md"
+                ></span>
+
+                <span
+                  id="contact-form-success"
+                  class="hidden mt-6 pl-4 p-2 text-green-700 bg-green-200 rounded-md"
                 ></span>
 
                 <button
@@ -122,6 +129,10 @@ import Base from "../layouts/Base.astro";
     "#contact-form-errors",
   );
 
+  const contactFormSuccessElement = document.querySelector(
+    "#contact-form-success",
+  );
+
   // Function is called through Turnstile onload callback
   // ts-ignore doesn't work here due to bug
   // https://github.com/withastro/astro/issues/7281
@@ -135,6 +146,9 @@ import Base from "../layouts/Base.astro";
         contactFormErrorsElement.classList.remove("block");
         contactFormErrorsElement.classList.add("hidden");
         contactFormErrorsElement.innerHTML = "";
+        contactFormSuccessElement.classList.remove("block");
+        contactFormSuccessElement.classList.add("hidden");
+        contactFormSuccessElement.innerHTML = "";
 
         if (turnstileActive) return;
         const turnstileElement = document.querySelector(".cf-turnstile");
@@ -157,6 +171,7 @@ import Base from "../layouts/Base.astro";
 
   declare const turnstile: any;
   declare const contactFormErrorsElement: HTMLSpanElement;
+  declare const contactFormSuccessElement: HTMLSpanElement;
 
   document
     .querySelector("#contact-form")!
@@ -190,6 +205,28 @@ import Base from "../layouts/Base.astro";
         message,
         turnstileResponse,
       });
+
+      if (submitFormRequest === "success") {
+        contactFormErrorsElement.classList.remove("block");
+        contactFormErrorsElement.classList.add("hidden");
+        contactFormErrorsElement.innerHTML = "";
+        contactFormSuccessElement.classList.remove("hidden");
+        contactFormSuccessElement.classList.add("block");
+        contactFormSuccessElement.innerHTML =
+          "Thanks for reaching out! I'll get back to you soon.";
+        return;
+      }
+
+      if (submitFormRequest === "error") {
+        contactFormErrorsElement.innerHTML =
+          "There was an error submitting your form. Please try again or email me directly with the email above.";
+        contactFormErrorsElement.classList.remove("hidden");
+        contactFormErrorsElement.classList.add("block");
+        contactFormSuccessElement.classList.remove("block");
+        contactFormSuccessElement.classList.add("hidden");
+        contactFormSuccessElement.innerHTML = "";
+        return;
+      }
     });
 </script>
 

@@ -92,8 +92,10 @@ const socialLinks = [
 
             <div class="mt-6 space-y-8 md:mt-8">
               <p class="-mx-2 flex items-start">
-                <span class="mx-2 w-72 truncate text-gray-700"
-                  >hello@briellefrench.com</span
+                <a
+                  class="mx-2 w-72 truncate text-gray-700"
+                  href="mailto:hello@briellefrench.com"
+                  >hello@briellefrench.com</a
                 >
               </p>
             </div>
@@ -102,15 +104,15 @@ const socialLinks = [
       </div>
     </section>
   </main>
+
+  <style>
+    .contact-form-input label {
+      @apply mb-2 block text-sm text-gray-600;
+    }
+
+    .contact-form-input input,
+    .contact-form-input textarea {
+      @apply mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-[#ff8abf] focus:outline-none focus:ring focus:ring-[#ff8abf] focus:ring-opacity-40;
+    }
+  </style>
 </Base>
-
-<style>
-  .contact-form-input label {
-    @apply mb-2 block text-sm text-gray-600;
-  }
-
-  .contact-form-input input,
-  .contact-form-input textarea {
-    @apply mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-[#ff8abf] focus:outline-none focus:ring focus:ring-[#ff8abf] focus:ring-opacity-40;
-  }
-</style>

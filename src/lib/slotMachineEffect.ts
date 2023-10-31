@@ -47,7 +47,7 @@ export class SlotMachineEffect {
     this.wordList.map((text) => {
       const elem = document.createElement("div");
       elem.classList.add("slot-machine--item");
-      elem.innerText = text;
+      elem.innerHTML = text;
       this.itemsContainer.append(elem);
     });
   }

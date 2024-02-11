@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import Base from "../layouts/Base.astro";
-import { portfolioEntries } from "../lib/getContent";
+import { portfolioEntries, portfolioPage } from "../lib/getContent";
 ---
 
-<Base>
+<Base title="Portfolio" description={portfolioPage.seoDescription}>
   <main class="base-main px-8 lg:px=0">
     <div class="portfolio-entries relative mb-4">
       {

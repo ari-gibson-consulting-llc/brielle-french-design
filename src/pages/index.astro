@@ -3,7 +3,7 @@ import { homePage } from "../lib/getContent";
 import Base from "../layouts/Base.astro";
 ---
 
-<Base>
+<Base description={homePage.seoDescription}>
   <main
     class="base-main grid w-full grid-cols-1 justify-center overflow-hidden px-10 md:grid-cols-10"
     data-slotMachineTextList={homePage.rotatingText}

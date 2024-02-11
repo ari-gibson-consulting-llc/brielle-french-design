@@ -6,6 +6,14 @@ interface ContentfulAbout {
   fields: {
     title: contentful.EntryFieldTypes.Text;
     bioText: contentful.EntryFieldTypes.Text;
+    seoDescription: contentful.EntryFieldTypes.Text;
+  };
+}
+
+interface ContentfulContact {
+  contentTypeId: "contactPage";
+  fields: {
+    seoDescription: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -15,6 +23,7 @@ interface ContentfulHome {
     stillText: contentful.EntryFieldTypes.Symbol;
     firstTextEntry: contentful.EntryFieldTypes.Symbol;
     rotatingText: contentful.EntryFieldTypes.Array<contentful.EntryFieldTypes.Symbol>;
+    seoDescription: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -27,6 +36,7 @@ interface ContentfulServices {
     sections: contentful.EntryFieldTypes.Array<
       contentful.EntryFieldTypes.EntryLink<ContentfulServicesSection>
     >;
+    seoDescription: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -36,6 +46,7 @@ interface ContentfulServicesSection {
     nameOfService: contentful.EntryFieldTypes.Symbol;
     slug: contentful.EntryFieldTypes.Symbol;
     descriptionOfService: contentful.EntryFieldTypes.Text;
+    seoDescription: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -50,6 +61,7 @@ interface ContentfulPortfolioPage {
         | ContentfulPortfolioEntryStaticImagesCarousels
       >
     >;
+    seoDescription: contentful.EntryFieldTypes.Text;
   };
 }
 
@@ -191,7 +203,12 @@ export const aboutPage = {
     /<br \/>/g,
     "<br /><br />",
   ),
+  seoDescription: aboutPageFields.seoDescription,
 };
+
+export const contactPage = (
+  await contentfulClient.getEntry<ContentfulContact>("2gOpJYcWh3NrhKBS0EfOwb")
+).fields;
 
 export const homePage = (
   await contentfulClient.getEntry<ContentfulHome>("dWhvw9XdtMQizE6qhrAU0")
@@ -219,6 +236,7 @@ export const servicesPage = {
       ).replace(/<br \/>/g, "<br /><br />"),
     };
   }),
+  seoDescription: servicesPageFields.seoDescription,
 };
 
 export const portfolioPage = (

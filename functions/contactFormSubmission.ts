@@ -150,7 +150,7 @@ async function sendEmail(input: SendEmailParams) {
       ],
       bcc: [
         {
-          email: "arimgibson@gmail.com",
+          email: "hello@briellefrench.com",
           name: "Brielle French",
         },
       ],

@@ -21,7 +21,7 @@ interface Props {
       openGraph={{
         basic: {
           title: title || "Brielle French Design",
-          image: "https://briellefrench.com/logo.svg",
+          image: "https://ef17-71-211-137-83.ngrok-free.app/logo.jpg",
           type: "website",
           url: "https://briellefrench.com",
         },
@@ -32,15 +32,22 @@ interface Props {
           alt: "Brielle French Design's logo",
           width: 3000,
           height: 1650,
-          type: "image/svg+xml",
+          type: "image/jpeg",
         },
       }}
       twitter={{
         card: "summary",
         title: title || "Brielle French Design",
         description: description,
-        image: "https://briellefrench.com/logo.svg",
+        image: "https://ef17-71-211-137-83.ngrok-free.app/logo.jpg",
         imageAlt: "Brielle French Design's logo",
+      }}
+      extend={{
+        // meta: [{
+        //   name: "image",
+        //   property: "og:image",
+        //   content: "https://ef17-71-211-137-83.ngrok-free.app/logo.jpg"
+        // }]
       }}
     />
     <meta charset="utf-8" />

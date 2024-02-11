@@ -55,8 +55,6 @@ export const onRequestPost: PagesFunction<Env> = async (context) => {
   // if errors in validation, return response from validateTurnstile
   if (!turnstileValidated) return turnstileValidated;
 
-  console.log(context.env.BREVO_API_KEY);
-
   return sendEmail({ name, email, message, apiKey: context.env.BREVO_API_KEY });
 };
 

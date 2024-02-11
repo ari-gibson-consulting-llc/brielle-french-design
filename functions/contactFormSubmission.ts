@@ -1,3 +1,5 @@
+import sanitizeHtml from "sanitize-html";
+
 interface Env {
   TURNSTILE_SECRET_KEY: string;
   BREVO_API_KEY: string;
@@ -24,8 +26,17 @@ interface ValidateTurnstileRequestResponse {
 }
 
 export const onRequestPost: PagesFunction<Env> = async (context) => {
-  const { name, email, message, turnstileResponse } =
-    (await context.request.json()) as any;
+  const {
+    name,
+    email,
+    message: unsanitizedMessage,
+    turnstileResponse,
+  } = (await context.request.json()) as any;
+
+  const message = sanitizeHtml(unsanitizedMessage, {
+    allowedTags: [],
+    allowedAttributes: {},
+  });
 
   const contactFormInputValidated = validateContactFormInput({
     name,
@@ -145,10 +156,13 @@ async function sendEmail(input: SendEmailParams) {
       ],
       htmlContent: `
 Your contact form submission has been received! I'll be in touch shortly.
-
-Name: ${name} as string
-Email: ${email} as string
-Message: ${message} as string`,
+<br />
+<br />
+Name: ${name}
+<br />
+Email: ${email}
+<br />
+Message: ${(message as string | null)?.replace(/\n/g, "<br />")}`,
       subject: "Contact Form Submitted on Brielle French Design",
     }),
   });

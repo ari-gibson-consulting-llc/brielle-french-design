@@ -26,6 +26,11 @@ const socialLinks = [
 ];
 ---
 
+<script
+  is:inline
+  src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=initTurnstile"
+  defer></script>
+
 <Base>
   <main class="base-main mt-4 md:mt-0 pb-12">
     <section class="bg-white">
@@ -35,7 +40,7 @@ const socialLinks = [
             <div
               class="mx-auto w-full overflow-hidden rounded-lg bg-white px-8 py-10 shadow-2xl shadow-gray-300/50 lg:max-w-xl"
             >
-              <form class="mt-6">
+              <form class="mt-6" id="contact-form">
                 <div class="contact-form-input flex-1">
                   <label for="name">Full Name</label>
                   <input type="text" id="name" placeholder="John Doe" />
@@ -58,8 +63,28 @@ const socialLinks = [
                     placeholder="Message"></textarea>
                 </div>
 
+                <div
+                  class="cf-turnstile mx-auto hidden justify-center pt-6"
+                  data-theme="light"
+                  data-execution="execute"
+                  data-sitekey="0x4AAAAAAAFYTTLlDH8mtaAe"
+                >
+                </div>
+
+                <span
+                  id="contact-form-errors"
+                  class="hidden mt-6 pl-4 p-2 text-red-700 bg-red-200 rounded-md"
+                ></span>
+
+                <span
+                  id="contact-form-success"
+                  class="hidden mt-6 pl-4 p-2 text-green-700 bg-green-200 rounded-md"
+                ></span>
+
                 <button
-                  class="text-md mt-6 w-full transform rounded-md bg-[#FF7DB8] px-6 py-3 font-bold capitalize tracking-wide text-white transition-colors duration-300 hover:bg-[#b35881] focus:outline-none focus:ring focus:ring-[#ff8abf] focus:ring-opacity-50"
+                  id="form-submit"
+                  class="text-md mt-6 w-full transform rounded-md px-6 py-3 font-bold capitalize tracking-wide text-white transition-colors duration-300 focus:outline-none focus:ring focus:ring-[#ff8abf] focus:ring-opacity-50"
+                  type="submit"
                 >
                   get in touch
                 </button>
@@ -114,5 +139,116 @@ const socialLinks = [
     .contact-form-input textarea {
       @apply mt-2 block w-full rounded-md border border-gray-200 bg-white px-5 py-3 text-gray-700 placeholder-gray-400 focus:border-[#ff8abf] focus:outline-none focus:ring focus:ring-[#ff8abf] focus:ring-opacity-40;
     }
+
+    /* adds higher specificity to override unocss reset, which makes background transparent  */
+    #form-submit {
+      @apply bg-[#FF7DB8] hover:bg-[#b35881];
+    }
   </style>
 </Base>
+
+<script is:inline>
+  const contactFormErrorsElement = document.querySelector(
+    "#contact-form-errors",
+  );
+
+  const contactFormSuccessElement = document.querySelector(
+    "#contact-form-success",
+  );
+
+  // Function is called through Turnstile onload callback
+  // ts-ignore doesn't work here due to bug
+  // https://github.com/withastro/astro/issues/7281
+  // @ts-ignore
+  function initTurnstile() {
+    let turnstileActive = false;
+
+    // prettier-ignore
+    document.querySelectorAll(".contact-form-input input, .contact-form-input textarea").forEach((elem) => {
+      elem.addEventListener("focus", () => {
+        contactFormErrorsElement.classList.remove("block");
+        contactFormErrorsElement.classList.add("hidden");
+        contactFormErrorsElement.innerHTML = "";
+        contactFormSuccessElement.classList.remove("block");
+        contactFormSuccessElement.classList.add("hidden");
+        contactFormSuccessElement.innerHTML = "";
+
+        if (turnstileActive) return;
+        const turnstileElement = document.querySelector(".cf-turnstile");
+        turnstileElement.classList.remove("hidden");
+        turnstileElement.classList.add("flex");
+        // turnstile variable comes from Turnstile script at top of file
+        // it is added as window variable and accessible here
+        turnstile.execute(turnstileElement);
+        turnstileActive = true;
+      });
+    });
+  }
+</script>
+
+<script>
+  import {
+    validateContactFormInput,
+    submitForm,
+  } from "../lib/clientContactForm";
+
+  declare const turnstile: any;
+  declare const contactFormErrorsElement: HTMLSpanElement;
+  declare const contactFormSuccessElement: HTMLSpanElement;
+
+  document
+    .querySelector("#contact-form")!
+    .addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = (document.querySelector("#name") as HTMLInputElement).value;
+      const email = (document.querySelector("#email") as HTMLInputElement)
+        .value;
+      const message = (document.querySelector("#message") as HTMLInputElement)
+        .value;
+      const contactFormErrors = validateContactFormInput({
+        name,
+        email,
+        message,
+      });
+
+      if (contactFormErrors.length > 0) {
+        turnstile.reset();
+        turnstile.execute(document.querySelector(".cf-turnstile"));
+        contactFormErrorsElement.innerHTML = contactFormErrors.join(",");
+        contactFormErrorsElement.classList.remove("hidden");
+        contactFormErrorsElement.classList.add("block");
+        return;
+      }
+
+      const turnstileResponse = turnstile.getResponse();
+
+      const submitFormRequest = await submitForm({
+        name,
+        email,
+        message,
+        turnstileResponse,
+      });
+
+      if (submitFormRequest === "success") {
+        contactFormErrorsElement.classList.remove("block");
+        contactFormErrorsElement.classList.add("hidden");
+        contactFormErrorsElement.innerHTML = "";
+        contactFormSuccessElement.classList.remove("hidden");
+        contactFormSuccessElement.classList.add("block");
+        contactFormSuccessElement.innerHTML =
+          "Thanks for reaching out! I'll get back to you soon.";
+        return;
+      }
+
+      if (submitFormRequest === "error") {
+        contactFormErrorsElement.innerHTML =
+          "There was an error submitting your form. Please try again or email me directly.";
+        contactFormErrorsElement.classList.remove("hidden");
+        contactFormErrorsElement.classList.add("block");
+        contactFormSuccessElement.classList.remove("block");
+        contactFormSuccessElement.classList.add("hidden");
+        contactFormSuccessElement.innerHTML = "";
+        return;
+      }
+    });
+</script>

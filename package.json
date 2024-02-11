@@ -19,7 +19,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "pages:dev": "wrangler pages dev --compatibility-date=2023-05-30 --proxy 4321 -- astro dev",
+    "pages:dev": "wrangler pages dev --compatibility-date=2024-02-10 --proxy 4321 -- astro dev",
     "pages:deploy": "astro build && wrangler pages deploy ./dist --branch=preview --project-name=brielle-french-design",
     "pages:deploy:prod": "astro build && wrangler pages deploy ./dist --branch=main --project-name=brielle-french-design",
     "format": "prettier -w . --plugin prettier-plugin-astro",
@@ -39,20 +39,24 @@
     "blaze-slider": "^1.9.3",
     "contentful": "^10.6.19",
     "minimasonry": "^1.3.2",
+    "sanitize-html": "^2.11.0",
     "sass": "^1.70.0",
     "sharp": "^0.33.2",
     "snarkdown": "^2.0.0",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20240208.0",
     "@types/minimasonry": "^1.3.4",
+    "@types/sanitize-html": "^2.11.0",
     "@unocss/preset-web-fonts": "^0.58.4",
     "@unocss/reset": "^0.58.4",
     "@unocss/transformer-directives": "^0.58.4",
     "prettier": "^3.2.4",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "typescript": "^5.0.4",
     "unocss": "^0.58.4",
-    "wrangler": "^3.25.0"
+    "wrangler": "^3.28.1"
   }
 }

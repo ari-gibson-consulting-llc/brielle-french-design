@@ -3,16 +3,56 @@ import "../styles/index.css";
 import { SEO } from "astro-seo";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
+import Logo from "../../public/logo.jpg";
 const { title, description } = Astro.props;
+
+interface Props {
+  title: string;
+  description: string;
+}
 ---
 
 <html lang="en">
   <head>
     <SEO
       title={title}
-      titleTemplate="%s - Brielle French Design"
+      titleTemplate="%s | Brielle French Design"
       titleDefault="Brielle French Design"
       description={description}
+      canonical={"https://briellefrench.com" + Astro.url.pathname}
+      openGraph={{
+        basic: {
+          title: title || "Brielle French Design",
+          image: Logo.src,
+          type: "website",
+          url: "https://briellefrench.com",
+        },
+        optional: {
+          description: description,
+        },
+        image: {
+          alt: "Brielle French Design's logo",
+          width: 3000,
+          height: 1650,
+          type: "image/jpeg",
+        },
+      }}
+      twitter={{
+        card: "summary",
+        title: title || "Brielle French Design",
+        description: description,
+        image: Logo.src,
+        imageAlt: "Brielle French Design's logo",
+      }}
+      extend={{
+        meta: [
+          {
+            name: "image",
+            property: "og:image",
+            content: Logo.src,
+          },
+        ],
+      }}
     />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

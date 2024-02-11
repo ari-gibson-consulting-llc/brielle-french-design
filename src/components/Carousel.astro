@@ -3,18 +3,41 @@ import { Image } from "astro:assets";
 import type { ContentfulAssetArr } from "../lib/getContent";
 type Props = {
   images: ContentfulAssetArr;
+  slidesToShow: number | undefined;
 };
 const { images } = Astro.props;
+
+const slidesToShow = (() => {
+  const numOfSlides = Astro.props.slidesToShow ?? 3;
+
+  return {
+    sm: 1,
+    md: Math.min(numOfSlides, 2),
+    lg: Math.min(numOfSlides, 3),
+  };
+})();
 ---
 
-<div class="blaze-slider pb-24">
+<astro-carousel
+  class="blaze-slider pb-24 px-28"
+  data-slides={JSON.stringify(slidesToShow)}
+  style={`--sm-slides-to-show: ${slidesToShow.sm}; --md-slides-to-show: ${slidesToShow.md}; --lg-slides-to-show: ${slidesToShow.lg};`}
+>
   <div class="blaze-container">
     <div class="blaze-track-container">
       <div class="blaze-track">
         {
           images.map((slide) => (
             <Image
-              src={slide.fields.file!.url + "?fm=webp&q=90&w=800"}
+              src={`https:${slide.fields.file!.url}` + "?fm=webp"}
+              widths={[360, 720, 768, 1024]}
+              sizes={`
+                (max-width: 360px) 360px,
+                (max-width: 768px) 768px,
+                (max-width: 1024px) 1024px,
+                (max-width: 2560px) 720px,
+                ${slide.fields.file!.details.image!.width}px
+              `}
               alt={slide.fields.description as string | null}
               width={slide.fields.file!.details.image!.width}
               height={slide.fields.file!.details.image!.height}
@@ -30,7 +53,7 @@ const { images } = Astro.props;
     <div class="blaze-pagination flex-gap-4 flex"></div>
     <button class="blaze-next">next</button>
   </div>
-</div>
+</astro-carousel>
 
 <style>
   html {
@@ -46,7 +69,6 @@ const { images } = Astro.props;
   }
 
   .blaze-track > * {
-    min-height: 300px;
     display: flex;
     font-size: 30px;
     justify-content: center;
@@ -93,18 +115,18 @@ const { images } = Astro.props;
   /* fix layout shifts */
 
   .blaze-slider {
-    --slides-to-show: 1;
+    --slides-to-show: --sm-slides-to-show;
   }
 
   @media (min-width: 768px) {
     .blaze-slider {
-      --slides-to-show: 2;
+      --slides-to-show: --md-slides-to-show;
     }
   }
 
   @media (min-width: 1024px) {
     .blaze-slider {
-      --slides-to-show: 3;
+      --slides-to-show: --lg-slides-to-show;
     }
   }
 </style>
@@ -137,25 +159,34 @@ const { images } = Astro.props;
 <script>
   import BlazeSlider from "blaze-slider";
   import "blaze-slider/dist/blaze.css";
-  const sliders = document.querySelectorAll(
-    ".blaze-slider",
-  ) as unknown as Array<HTMLElement>;
-  sliders.forEach(
-    (slider) =>
-      new BlazeSlider(slider, {
+
+  class AstroCarousel extends HTMLElement {
+    constructor() {
+      super();
+
+      const numOfSlides = JSON.parse(this.dataset.slides!) as {
+        sm: number;
+        md: number;
+        lg: number;
+      };
+
+      new BlazeSlider(this, {
         all: {
           slidesToScroll: 1,
-          slidesToShow: 1,
+          slidesToShow: numOfSlides.sm,
           enableAutoplay: true,
           autoplayInterval: 4000,
           stopAutoplayOnInteraction: true,
         },
         "(min-width: 768px)": {
-          slidesToShow: 2,
+          slidesToShow: numOfSlides.md,
         },
         "(min-width: 1024px)": {
-          slidesToShow: 3,
+          slidesToShow: numOfSlides.lg,
         },
-      }),
-  );
+      });
+    }
+  }
+
+  customElements.define("astro-carousel", AstroCarousel);
 </script>

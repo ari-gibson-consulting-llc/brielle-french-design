@@ -15,7 +15,10 @@ export default defineConfig({
     presetWebFonts({
       provider: "google",
       fonts: {
-        base: "Inter",
+        base: {
+          name: "Inter",
+          weights: [400, 500, 600, 700],
+        },
       },
     }),
   ],

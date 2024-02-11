@@ -16,7 +16,16 @@ import { portfolioEntries } from "../lib/getContent";
             <a class="absolute" href={`/portfolio/${entry.props.slug}`}>
               <Image
                 class="m-0 my-8 lg:my-0"
-                src={image.fields.file!.url + "?fm=webp&q=75"}
+                src={`https:${image.fields.file!.url}` + "?fm=webp"}
+                widths={[360, 533, 720, 768, 1024]}
+                sizes={`
+                  (max-width: 360px) 360px,
+                  (max-width: 768px) 768px,
+                  (max-width: 1024px) 1024px,
+                  (max-width: 1440px) 720px,
+                  (max-width: 2560px) 533px,
+                  ${image.fields.file!.details.image!.width}px
+                `}
                 alt={image.fields.title as string | null}
                 width={image.fields.file!.details.image!.width}
                 height={image.fields.file!.details.image!.height}

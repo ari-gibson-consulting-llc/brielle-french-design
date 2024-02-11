@@ -1,6 +1,7 @@
 ---
 import Base from "../layouts/Base.astro";
 import ServicesSection from "../components/ServicesSection.astro";
+import Button from "../components/Button.astro";
 import { servicesPage as servicesPageUndefined } from "../lib/getContent";
 
 type ServicesPage = Omit<typeof servicesPageUndefined, "sections"> & {
@@ -81,6 +82,7 @@ function standardizeServiceSection(service: (typeof servicesPage.sections)[0]) {
           <ServicesSection {...standardizeServiceSection(service)} />
         ))
       }
+      <Button class={"mb-24 lg:mb-32"}>Contact Me</Button>
     </article>
   </main>
 </Base>

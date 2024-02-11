@@ -48,7 +48,7 @@ export class SlotMachineEffect {
       const elem = document.createElement("div");
       elem.classList.add("slot-machine--item");
       elem.innerHTML = text;
-      this.itemsContainer.append(elem);
+      this.itemsContainer.appendChild(elem);
     });
   }
 

@@ -4,6 +4,11 @@ import { SEO } from "astro-seo";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 const { title, description } = Astro.props;
+
+interface Props {
+  title: string;
+  description: string;
+}
 ---
 
 <html lang="en">
@@ -13,6 +18,30 @@ const { title, description } = Astro.props;
       titleTemplate="%s | Brielle French Design"
       titleDefault="Brielle French Design"
       description={description}
+      openGraph={{
+        basic: {
+          title: title || "Brielle French Design",
+          image: "https://briellefrench.com/logo.svg",
+          type: "website",
+          url: "https://briellefrench.com",
+        },
+        optional: {
+          description: description,
+        },
+        image: {
+          alt: "Brielle French Design's logo",
+          width: 3000,
+          height: 1650,
+          type: "image/svg+xml",
+        },
+      }}
+      twitter={{
+        card: "summary",
+        title: title || "Brielle French Design",
+        description: description,
+        image: "https://briellefrench.com/logo.svg",
+        imageAlt: "Brielle French Design's logo",
+      }}
     />
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

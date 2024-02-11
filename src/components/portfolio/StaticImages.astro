@@ -9,7 +9,15 @@ const { images } = Astro.props;
   images.map((image) => (
     <Image
       class="pb-4 px-28"
-      src={image.fields.file!.url + "?fm=webp&q=75"}
+      src={`https:${image.fields.file!.url}` + "?fm=webp"}
+      widths={[360, 720, 768, 1024]}
+      sizes={`
+        (max-width: 360px) 360px,
+        (max-width: 768px) 768px,
+        (max-width: 1024px) 1024px,
+        (max-width: 2560px) 720px,
+        ${image.fields.file!.details.image!.width}px
+      `}
       alt={image.fields.title as string | null}
       width={image.fields.file!.details.image!.width}
       height={image.fields.file!.details.image!.height}

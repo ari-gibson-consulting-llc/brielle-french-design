@@ -29,7 +29,15 @@ const slidesToShow = (() => {
         {
           images.map((slide) => (
             <Image
-              src={slide.fields.file!.url + "?fm=webp&q=75"}
+              src={`https:${slide.fields.file!.url}` + "?fm=webp"}
+              widths={[360, 720, 768, 1024]}
+              sizes={`
+                (max-width: 360px) 360px,
+                (max-width: 768px) 768px,
+                (max-width: 1024px) 1024px,
+                (max-width: 2560px) 720px,
+                ${slide.fields.file!.details.image!.width}px
+              `}
               alt={slide.fields.description as string | null}
               width={slide.fields.file!.details.image!.width}
               height={slide.fields.file!.details.image!.height}

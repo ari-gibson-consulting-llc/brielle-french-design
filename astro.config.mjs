@@ -6,7 +6,14 @@ import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [UnoCSS({
-    injectReset: true // or a path to the reset file
-  }), alpinejs(), icon()]
+  integrations: [
+    UnoCSS({
+      injectReset: true, // or a path to the reset file
+    }),
+    alpinejs(),
+    icon(),
+  ],
+  image: {
+    domains: ["images.ctfassets.net"],
+  },
 });
